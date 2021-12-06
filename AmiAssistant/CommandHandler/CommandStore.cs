@@ -2,7 +2,7 @@
 
 namespace AmiFriendo.CommandHandler
 {
-    public class Class1
+    public class CommandStore
     {
         
     }
