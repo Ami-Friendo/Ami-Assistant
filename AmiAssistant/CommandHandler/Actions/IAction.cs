@@ -9,6 +9,7 @@ namespace AmiFriendo.CommandHandler.Actions
     public interface IAction
     {
         string Name { get; }
+        string FriendlyName { get; set; }
         string Description { get; }
         IArgument[] InputArguments { get; }
         IArgument[] OutputArguments { get; }

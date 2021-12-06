@@ -7,6 +7,6 @@ namespace AmiFriendo.CommandHandler
     public class CommandContext
     {
         // <название аргумента, значение аргумента>
-        Dictionary<string, string> Context { get; } = new Dictionary<string, string>();
+        public Dictionary<string, string> Context { get; } = new Dictionary<string, string>();
     }
 }

@@ -2,6 +2,67 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>AmiFriendo.CommandHandler</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\ActionDescription.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ActionDescription.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ActionFriendlyName.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ActionFriendlyName.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ArgumentDescription.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArgumentDescription.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ArgumentExampleOutput.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArgumentExampleOutput.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ArgumentExamplesInput.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArgumentExamplesInput.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ArgumentFriendlyNames.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ArgumentFriendlyNames.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ActionDescription.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ActionDescription.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ActionFriendlyName.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ActionFriendlyName.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ArgumentDescription.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ArgumentDescription.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ArgumentExampleOutput.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ArgumentExampleOutput.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ArgumentExamplesInput.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ArgumentExamplesInput.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ArgumentFriendlyNames.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ArgumentFriendlyNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

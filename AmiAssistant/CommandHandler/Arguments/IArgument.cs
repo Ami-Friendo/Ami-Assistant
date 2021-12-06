@@ -17,6 +17,6 @@ namespace AmiFriendo.CommandHandler.Arguments
         bool IsRequired { get; } // является ли аргумент обязательным, если да - то необходимо что бы пользователь ввел значение
                                  // если нет - используется дефолтное значение, либо переменная среды
 
-        bool parseValue(string inputValue); // true - если обработка прошла успешно
+        bool ParseValue(string inputValue); // true - если обработка прошла успешно
     }
 }

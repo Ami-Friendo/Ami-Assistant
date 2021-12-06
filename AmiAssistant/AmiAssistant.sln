@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandHandler", "CommandHandler\CommandHandler.csproj", "{58A18A97-9218-4196-869A-434385EF23CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApp", "WindowsApp\WindowsApp.csproj", "{7B3FFEB0-5A6C-4EF1-ABFC-C1AB2A34281F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{58A18A97-9218-4196-869A-434385EF23CE} = {58A18A97-9218-4196-869A-434385EF23CE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{E7339C75-F5BF-4F02-96B9-BDDC05CD1820}"
 EndProject

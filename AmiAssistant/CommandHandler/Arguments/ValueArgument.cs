@@ -16,12 +16,12 @@ namespace AmiFriendo.CommandHandler.Arguments
             get => _friendlyName;
             set => _friendlyName = value; 
         }
-        public string Description => _descrption;
-        public string ExamplesInput => _examplesInput;
-        public string ExampleOutput => _exampleOutput;
+        public string Description => Resources.ArgumentDescription.ValueArgument;
+        public string ExamplesInput => Resources.ArgumentExamplesInput.ValueArgument;
+        public string ExampleOutput => Resources.ArgumentExampleOutput.ValueArgument;
         public string Value => _value;
         public bool IsRequired => _isRequired;
-        public bool parseValue(string inputValue)
+        public bool ParseValue(string inputValue)
         {
             _value = inputValue;
             return true;
@@ -35,11 +35,8 @@ namespace AmiFriendo.CommandHandler.Arguments
         }
 
         private string _name;
-        private string _value;
+        private string _value = "default";
         private string _friendlyName = Resources.ArgumentFriendlyNames.ValueArgument;
-        private string _descrption = Resources.ArgumentDescription.ValueArgument;
-        private string _examplesInput = Resources.ArgumentExamplesInput.ValueArgument;
-        private string _exampleOutput = Resources.ArgumentExampleOutput.ValueArgument;
         private bool _isRequired;
     }
 }
