@@ -32,10 +32,11 @@ namespace AmiFriendo.CommandHandler.Arguments
         {
             _name = nameArgument;
             _isRequired = isRequired;
+            _value = "default";
         }
 
         private string _name;
-        private string _value = "default";
+        private string _value;
         private string _friendlyName = Resources.ArgumentFriendlyNames.ValueArgument;
         private bool _isRequired;
     }

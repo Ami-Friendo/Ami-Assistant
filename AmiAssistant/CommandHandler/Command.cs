@@ -6,6 +6,7 @@ using AmiFriendo.CommandHandler.Actions;
 
 namespace AmiFriendo.CommandHandler
 {
+    using CommandContext = Dictionary<string, string>;
     public class Command
     {
         public List<string> Commands { get; } = new List<string>();

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using AmiFriendo.CommandHandler;
 using AmiFriendo.CommandHandler.Actions;
 
 namespace AmiFriendo.ConsoleApp
 {
+    using CommandContext = Dictionary<string, string>;
     class Program
     {
         static void Main(string[] args)
@@ -12,16 +14,21 @@ namespace AmiFriendo.ConsoleApp
             CommandContext cc = new();
 
             IAction action = new ReturnAction();
-            var i = action?.OutputArguments[0].Name;
-            Console.WriteLine(i);
 
+            action.InputArguments[0].ParseValue("50");
+            Console.WriteLine("InputArguments[0]");
+            Console.WriteLine(action.InputArguments[0].Name);
+            Console.WriteLine(action.InputArguments[0].FriendlyName);
+            Console.WriteLine(action.InputArguments[0].Description);
+            Console.WriteLine(action.InputArguments[0].ExamplesInput);
+            Console.WriteLine(action.InputArguments[0].ExampleOutput);
 
-            //action.InputArguments[0].ParseValue("50");
-            //action.InputArguments[1].ParseValue("20");
+            Console.WriteLine("InputArguments[1]");
+            action.InputArguments[1].ParseValue("20");
 
-            //action.Execute(ref cc);
+            action.Execute(ref cc);
 
-            //Console.WriteLine(cc.Context["return"]);
+            Console.WriteLine(cc["return"]);
         }
     }
 }

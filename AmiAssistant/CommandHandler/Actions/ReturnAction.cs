@@ -5,6 +5,7 @@ using System.Text;
 
 namespace AmiFriendo.CommandHandler.Actions
 {
+    using CommandContext = Dictionary<string, string>;
     public class ReturnAction : IAction
     {
         const string DEFAULT_NAME = "return";
@@ -17,13 +18,13 @@ namespace AmiFriendo.CommandHandler.Actions
             set => _friendlyName = value;
         }
         public string Description => Resources.ActionDescription.ReturnAction;
-        public IArgument[] InputArguments => new IArgument[2];
-        public IArgument[] OutputArguments => new IArgument[1];
+        public IArgument[] InputArguments => _inputArguments;
+        public IArgument[] OutputArguments => _outputArguments;
 
         public void Execute(ref CommandContext context)
         {
             // test
-            context.Context.Add("return", (Int32.Parse(InputArguments[0].Value)
+            context.Add("return", (Int32.Parse(InputArguments[0].Value)
                 + Int32.Parse(InputArguments[1].Value)).ToString());
         }
         #endregion
@@ -39,5 +40,7 @@ namespace AmiFriendo.CommandHandler.Actions
 
         private string _name;
         private string _friendlyName = Resources.ActionFriendlyName.ReturnAction;
+        private IArgument[] _inputArguments = new IArgument[2];
+        private IArgument[] _outputArguments = new IArgument[1];
     }
 }
