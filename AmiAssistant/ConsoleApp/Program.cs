@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using AmiFriendo.CommandHandler;
 using AmiFriendo.CommandHandler.Actions;
+using AmiFriendo.CommandHandler.Arguments;
 
 namespace AmiFriendo.ConsoleApp
 {
@@ -13,8 +14,10 @@ namespace AmiFriendo.ConsoleApp
         {
             CommandContext cc = new();
 
+            ///
+            /// TestAction
+            ///
             IAction action = new TestAction();
-
             action.InputArguments[0].ParseValue("50");
             Console.WriteLine("InputArguments[0]");
             Console.WriteLine(action.InputArguments[0].Name);
@@ -29,6 +32,21 @@ namespace AmiFriendo.ConsoleApp
             action.Execute(ref cc);
 
             Console.WriteLine(cc["return"]);
+
+            ///
+            /// Directory Argument
+            ///
+            var directory = new DirectoryArgument();
+            Console.WriteLine(directory.ParseValue(@"C:\Users\Krav_up8d\Desktop\Ami-assistant"));
+            Console.WriteLine(directory.Value);
+
+            ///
+            /// File Argument
+            ///
+            Console.WriteLine();
+            var file = new FileArgument();
+            Console.WriteLine(file.ParseValue(@"photo.txt"));
+            Console.WriteLine(file.Value);
         }
     }
 }
