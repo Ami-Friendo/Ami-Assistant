@@ -13,7 +13,7 @@ namespace AmiFriendo.ConsoleApp
         {
             CommandContext cc = new();
 
-            IAction action = new ReturnAction();
+            IAction action = new TestAction();
 
             action.InputArguments[0].ParseValue("50");
             Console.WriteLine("InputArguments[0]");

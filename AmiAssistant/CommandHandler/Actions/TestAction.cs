@@ -6,9 +6,9 @@ using System.Text;
 namespace AmiFriendo.CommandHandler.Actions
 {
     using CommandContext = Dictionary<string, string>;
-    public class ReturnAction : IAction
+    public class TestAction : IAction
     {
-        const string DEFAULT_NAME = "return";
+        const string DEFAULT_NAME = "test";
 
         #region IAction Implementation
         public string Name => _name;
@@ -23,21 +23,24 @@ namespace AmiFriendo.CommandHandler.Actions
 
         public void Execute(ref CommandContext context)
         {
-            context.Add("return", _inputArguments[0].Value);
+            // test
+            context.Add("return", (Int32.Parse(InputArguments[0].Value)
+                + Int32.Parse(InputArguments[1].Value)).ToString());
         }
         #endregion
 
-        public ReturnAction(string nameAction = DEFAULT_NAME)
+        public TestAction(string nameAction = DEFAULT_NAME)
         {
             _name = nameAction;
 
-            InputArguments[0] = new ValueArgument(isRequired: true);
-            OutputArguments[0] = new ValueArgument(nameArgument: "return");
+            InputArguments[0] = new ValueArgument();
+            InputArguments[1] = new ValueArgument();
+            OutputArguments[0] = new ValueArgument();
         }
 
         private string _name;
         private string _friendlyName = Resources.ActionFriendlyName.ReturnAction;
-        private IArgument[] _inputArguments = new IArgument[1];
+        private IArgument[] _inputArguments = new IArgument[2];
         private IArgument[] _outputArguments = new IArgument[1];
     }
 }
