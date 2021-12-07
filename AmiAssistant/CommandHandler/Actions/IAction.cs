@@ -16,5 +16,6 @@ namespace AmiFriendo.CommandHandler.Actions
         IArgument[] OutputArguments { get; }
 
         void Execute(ref CommandContext context);
+        bool CanExecute(ref string cause); // cause не изменится, если нет ошибки
     }
 }

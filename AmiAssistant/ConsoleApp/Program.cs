@@ -45,8 +45,17 @@ namespace AmiFriendo.ConsoleApp
             ///
             Console.WriteLine();
             var file = new FileArgument();
-            Console.WriteLine(file.ParseValue(@"photo.txt"));
+            Console.WriteLine(file.ParseValue(@"/photo.txt"));
             Console.WriteLine(file.Value);
+
+            ///
+            /// ExecuteAction
+            ///
+            Console.WriteLine();
+            var action2 = new ExecuteAction();
+            action2.InputArguments[0].ParseValue(@"C:\Program Files (x86)\Notepad++");
+            action2.InputArguments[1].ParseValue(@"notepad++.ex");
+            action2.Execute(ref cc);
         }
     }
 }

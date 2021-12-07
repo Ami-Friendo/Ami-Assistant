@@ -24,7 +24,7 @@ namespace AmiFriendo.CommandHandler.Arguments
         public bool IsRequired => _isRequired;
         public bool ParseValue(string inputValue)
         {
-            if (inputValue.Contains(@"/") || inputValue.Contains(@"\"))
+            if (inputValue.Contains(Path.DirectorySeparatorChar))
                 return false;
 
             try
