@@ -1,12 +1,78 @@
-﻿<Window x:Class="WindowsApp.MainWindow"
+﻿<Window x:Class="Design.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WindowsApp"
+        xmlns:local="clr-namespace:Design"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Height="600" Width="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+    <!--
+    Colors :
+     #278268 
+     #274082
+     #276e82
+    -->
+    <Border Background="#274082"
+            CornerRadius="20"
+            >
+        <Grid>
 
-    </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <!--Top Buttons menu-->
+                <RowDefinition Height="75" MinHeight="20" MaxHeight="30"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <!--Close Button-->
+                <Button Content="_" Width="20" Height="20" HorizontalAlignment="Right" Margin="5" Click=""
+                        >
+                    <Button.Template>
+                        <ControlTemplate  TargetType="Button">
+                            <Grid>
+                                <Ellipse Fill="Red"></Ellipse>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <!--Theme Button-->
+                <Button Width="150" Height="50"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="22"
+                       Margin="20,0,0,0"
+                    ></Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="2">
+                <!--Setting Button-->
+                <Button Width="150" Height="50"
+                       HorizontalAlignment="Right"
+                       Foreground="White"
+                       FontSize="22"
+                       Margin="0,0,20,0"
+                         ></Button>
+
+            </StackPanel>
+
+        </Grid>
+    </Border>
 </Window>

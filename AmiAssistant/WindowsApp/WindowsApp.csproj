@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.19.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Image\" />
+    <Folder Include="MVVM\" />
+    <Folder Include="Theme\" />
   </ItemGroup>
 
 </Project>

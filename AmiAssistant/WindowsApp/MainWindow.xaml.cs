@@ -26,4 +26,27 @@ namespace WindowsApp
             InitializeComponent();
         }
     }
+    #region Hide Button Click
+    /*
+     
+     System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
+        public MainWindow()
+        {
+            InitializeComponent();
+            ni.Icon = new System.Drawing.Icon("111.ico");
+        }
+
+        private void Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ni.Visible = true;
+            ni.DoubleClick += (sndr, args) =>
+            {
+                Show();
+                WindowState = WindowState.Normal;
+            };
+            Hide();
+        }
+
+     */
+    #endregion
 }
