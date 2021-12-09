@@ -24,22 +24,26 @@ namespace AmiFriendo.CommandHandler.Actions
 
         public void Execute(ref CommandContext context)
         {
-            System.Diagnostics.Process.Start(file.FullName);
+            System.Diagnostics.Process.Start(getFile().FullName);
         }
 
-        public bool CanExecute(ref string cause)
+        public bool CanExecute()
         {
-            if(getFile().Exists)
+            string str;
+            return CanExecute(out str);
+        }
+
+        public bool CanExecute(out string cause)
+        {
+            if(!getFile().Exists)
             {
-                return false;
                 cause = "";
+                return false;
             }
-
-
+            cause = null;
             return true;
         }
         #endregion
-
         public ExecuteAction(string nameAction = DEFAULT_NAME)
         {
             _name = nameAction;

@@ -27,6 +27,18 @@ namespace AmiFriendo.CommandHandler.Actions
             context.Add("return", (Int32.Parse(InputArguments[0].Value)
                 + Int32.Parse(InputArguments[1].Value)).ToString());
         }
+
+        public bool CanExecute()
+        {
+            string str;
+            return CanExecute(out str);
+        }
+
+        public bool CanExecute(out string cause)
+        {
+            cause = null;
+            return true;
+        }
         #endregion
 
         public TestAction(string nameAction = DEFAULT_NAME)

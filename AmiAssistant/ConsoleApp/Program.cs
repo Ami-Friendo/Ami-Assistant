@@ -54,8 +54,18 @@ namespace AmiFriendo.ConsoleApp
             Console.WriteLine();
             var action2 = new ExecuteAction();
             action2.InputArguments[0].ParseValue(@"C:\Program Files (x86)\Notepad++");
-            action2.InputArguments[1].ParseValue(@"notepad++.ex");
-            action2.Execute(ref cc);
+            action2.InputArguments[1].ParseValue(@"notepad++.exe");
+            Console.WriteLine($"Can execute: {action2.CanExecute()}");
+            if (action2.CanExecute())
+            {
+                action2.Execute(ref cc);
+            }
+            else
+            {
+                string str;
+                action2.CanExecute(out str);
+                Console.WriteLine($"cause: {str}");
+            }
         }
     }
 }

@@ -23,7 +23,31 @@ namespace AmiFriendo.CommandHandler.Actions
 
         public void Execute(ref CommandContext context)
         {
+            //string str;
+            //if (!CanExecute(str))
+            //{
+            //    throw 
+            //}
+
             context.Add("return", _inputArguments[0].Value);
+        }
+
+        public bool CanExecute()
+        {
+            string str;
+            return CanExecute(out str);
+        }
+
+        public bool CanExecute(out string cause)
+        {
+            if (_inputArguments[0].Value == null)
+            {
+                cause = "";
+                return false;
+            }
+                
+            cause = null;
+            return true;
         }
         #endregion
 
