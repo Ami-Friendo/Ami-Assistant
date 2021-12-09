@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using AmiFriendo.CommandHandler.Exceptions;
+
 namespace AmiFriendo.CommandHandler.Actions
 {
     using CommandContext = Dictionary<string, string>;
@@ -23,6 +25,18 @@ namespace AmiFriendo.CommandHandler.Actions
 
         public void Execute(ref CommandContext context)
         {
+            // TODO: вынести куда-то отдельно
+            ArgumentReplacer ar = new ArgumentReplacer();
+            foreach (var argument in _inputArguments)
+            {
+                var replaced_value = ar.Replace(argument.Value, context);
+                argument.ParseValue(replaced_value);
+            }
+            ///////
+
+            if (!CanExecute())
+                throw new NonCanExecuteActionException();
+
             //string str;
             //if (!CanExecute(str))
             //{

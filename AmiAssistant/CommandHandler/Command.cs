@@ -11,11 +11,26 @@ namespace AmiFriendo.CommandHandler
     {
         public List<string> Commands { get; } = new List<string>();
         public List<IAction> Actions { get; } = new List<IAction>();
-        public CommandContext Context { get; } = new CommandContext();
+        //public CommandContext Context => _context;
 
-        public string execute()
+        public string Execute()
         {
-            return null;
+            _context = new CommandContext();
+            foreach (var action in Actions)
+            {
+                action.Execute(ref _context);
+            }
+
+            try
+            {
+                return _context["return"];
+            }
+            catch
+            {
+                return null;
+            }
         }
+
+        private CommandContext _context;
     }
 }

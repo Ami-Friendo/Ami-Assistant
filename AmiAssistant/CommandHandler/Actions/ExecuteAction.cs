@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
+using AmiFriendo.CommandHandler.Exceptions;
 using AmiFriendo.CommandHandler.Arguments;
 
 namespace AmiFriendo.CommandHandler.Actions
@@ -24,6 +25,9 @@ namespace AmiFriendo.CommandHandler.Actions
 
         public void Execute(ref CommandContext context)
         {
+            if (!CanExecute())
+                throw new NonCanExecuteActionException();
+
             System.Diagnostics.Process.Start(getFile().FullName);
         }
 

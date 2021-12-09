@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using AmiFriendo.CommandHandler.Exceptions;
+
 namespace AmiFriendo.CommandHandler.Actions
 {
     using CommandContext = Dictionary<string, string>;
@@ -23,9 +25,11 @@ namespace AmiFriendo.CommandHandler.Actions
 
         public void Execute(ref CommandContext context)
         {
-            // test
-            context.Add("return", (Int32.Parse(InputArguments[0].Value)
-                + Int32.Parse(InputArguments[1].Value)).ToString());
+            if (!CanExecute())
+                throw new NonCanExecuteActionException();
+
+            context.Add(_outputArguments[0].Name, (Int32.Parse(_inputArguments[0].Value)
+                + Int32.Parse(_inputArguments[1].Value)).ToString());
         }
 
         public bool CanExecute()
