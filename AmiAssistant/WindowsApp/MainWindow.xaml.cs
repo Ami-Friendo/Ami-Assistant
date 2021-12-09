@@ -21,15 +21,27 @@ namespace WindowsApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
         public MainWindow()
         {
             InitializeComponent();
         }
+        private void Hidden_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            ni.Visible = true;
+            ni.DoubleClick += (sndr, args) =>
+            {
+                this.Show();
+                WindowState = WindowState.Normal;
+            };
+            this.Hide();
+        }
     }
+
     #region Hide Button Click
     /*
      
-     System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
+    
         public MainWindow()
         {
             InitializeComponent();
@@ -38,12 +50,7 @@ namespace WindowsApp
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            ni.Visible = true;
-            ni.DoubleClick += (sndr, args) =>
-            {
-                Show();
-                WindowState = WindowState.Normal;
-            };
+            
             Hide();
         }
 

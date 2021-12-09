@@ -1,4 +1,4 @@
-﻿<Window x:Class="Design.MainWindow"
+﻿<Window x:Class="WindowsApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -24,7 +24,7 @@
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="250" />
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
@@ -37,11 +37,41 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            
+            <!--Hidden Button-->
             <StackPanel Grid.Row="0" Grid.Column="2">
-                <!--Close Button-->
-                <Button Content="_" Width="20" Height="20" HorizontalAlignment="Right" Margin="5" Click=""
+
+                <Button Content="e" Width="20" Height="20" HorizontalAlignment="Left" Margin="5" 
+                        Name="Hidden_BTN" Click=""
                         >
+                    <Button.Template>
+                        <ControlTemplate  TargetType="Button">
+                            <Grid>
+                                <Ellipse Fill="Green"></Ellipse>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+            <!--Orange Button-->
+            <StackPanel Grid.Row="0" Grid.Column="2">
+
+                <Button Content="e" Width="20" Height="20" HorizontalAlignment="Center" Margin="5" Click=""
+                        >
+                    <Button.Template>
+                        <ControlTemplate  TargetType="Button">
+                            <Grid>
+                                <Ellipse Fill="Orange"></Ellipse>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+            <!--Close Button-->
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <Button Content="X" Width="20" Height="20" HorizontalAlignment="Right" Margin="5" Click=""
+                        Name="Close_BTN" >
                     <Button.Template>
                         <ControlTemplate  TargetType="Button">
                             <Grid>
@@ -51,7 +81,7 @@
                     </Button.Template>
                 </Button>
             </StackPanel>
-            
+
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <!--Theme Button-->
                 <Button Width="150" Height="50"
