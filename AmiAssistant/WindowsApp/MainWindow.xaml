@@ -24,8 +24,8 @@
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250" />
                 <ColumnDefinition />
+                <ColumnDefinition Width="250" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
@@ -37,11 +37,24 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
+            <!--Splitter-->
+            <GridSplitter Grid.Row="0" 
+                          Grid.Column="2" 
+                          Width="130" 
+                          Height="2"
+                          Background="White"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Bottom">
+                
+            </GridSplitter>
+            
             <!--Hidden Button-->
             <StackPanel Grid.Row="0" Grid.Column="2">
-
-                <Button Content="e" Width="20" Height="20" HorizontalAlignment="Left" Margin="5" 
-                        Name="Hidden_BTN" Click=""
+                <Button Width="20" Height="20" 
+                        HorizontalAlignment="Left" 
+                        Margin="5" 
+                        Name="Hidden_BTN" 
+                        Click="Hidden_BTN_Click"
                         >
                     <Button.Template>
                         <ControlTemplate  TargetType="Button">
@@ -53,10 +66,14 @@
                 </Button>
             </StackPanel>
 
-            <!--Orange Button-->
+            <!--FullScreen Button-->
             <StackPanel Grid.Row="0" Grid.Column="2">
 
-                <Button Content="e" Width="20" Height="20" HorizontalAlignment="Center" Margin="5" Click=""
+                <Button Width="20" Height="20" 
+                        HorizontalAlignment="Center" 
+                        Margin="5" 
+                        Name="FullScreen_BTN"
+                        Click="FullScreen_BTN_Click"
                         >
                     <Button.Template>
                         <ControlTemplate  TargetType="Button">
@@ -70,10 +87,14 @@
 
             <!--Close Button-->
             <StackPanel Grid.Row="0" Grid.Column="2">
-                <Button Content="X" Width="20" Height="20" HorizontalAlignment="Right" Margin="5" Click=""
-                        Name="Close_BTN" >
+                <Button Width="20" Height="20" 
+                        HorizontalAlignment="Right" 
+                        Margin="5" 
+                        Name="Close_BTN" 
+                        Click="Close_BTN_Click"
+                        >
                     <Button.Template>
-                        <ControlTemplate  TargetType="Button">
+                        <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Ellipse Fill="Red"></Ellipse>
                             </Grid>
@@ -84,25 +105,67 @@
 
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <!--Theme Button-->
-                <Button Width="150" Height="50"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="22"
-                       Margin="20,0,0,0"
-                    ></Button>
+                <Button Width="120" Height="50"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="0 20 0 0"
+                        Name="Theme_Button"
+                        Click="Theme_Button_Click"
+                        >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border Background="#cad149" CornerRadius="20">
+                                    <Ellipse Fill="Transparent">
+                                    </Ellipse>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="2">
                 <!--Setting Button-->
-                <Button Width="150" Height="50"
-                       HorizontalAlignment="Right"
-                       Foreground="White"
-                       FontSize="22"
-                       Margin="0,0,20,0"
+                <Button Width="100" Height="50"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="22"
+                        Margin="0,0,20,0"
+                        Content="Settings" Name="Setting_BTN" Click="Setting_BTN_Click"
                          ></Button>
 
             </StackPanel>
-
+            
+            <!--Voice Button-->
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical">
+                <Button Width="120" Height="120" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Margin="35" 
+                        Name="Voice_Button"
+                        Click="Voice_Button_Click"
+                        >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse>
+                                    <Ellipse.Fill>
+                                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                            <GradientStop Color="#286352 " Offset="0"></GradientStop>
+                                            <GradientStop Color="#33a685" Offset="0.6"></GradientStop>
+                                            <GradientStop Color="#5aedc3" Offset="1"></GradientStop>
+                                        </LinearGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                    
+                </Button>
+            </StackPanel>
+            <!--Text-->
         </Grid>
     </Border>
 </Window>

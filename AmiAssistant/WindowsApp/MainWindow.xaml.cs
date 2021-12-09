@@ -36,6 +36,16 @@ namespace WindowsApp
             };
             this.Hide();
         }
+
+        private void Close_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FullScreen_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            // add fullscreen func
+        }
     }
 
     #region Hide Button Click
