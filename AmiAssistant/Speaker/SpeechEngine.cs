@@ -16,12 +16,6 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 namespace Speaker
 {
-
-
-
-
-
-
     class Talker
     {
         public static async Task RecognitionWithAutoDetectSourceLanguageAsync(SpeechConfig config)
@@ -108,13 +102,14 @@ namespace Speaker
             }
         }
 
-
-
-
-
+        static void Speecher_Settings()
+        {
+            var speechConfig = SpeechConfig.FromSubscription("d201cb5c2b814c719d199f12f7449b70", "westeurope");
+            using var synthesizer = new SpeechSynthesizer(speechConfig);
+        }
 
         public async static Task Speecher_Language(SpeechConfig speechConfig)
-        {          
+        {
 
             // can switch "Latency" to "Accuracy" depending on priority
             speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
@@ -154,18 +149,29 @@ namespace Speaker
         public static async Task Speecher_Voice(SpeechConfig speechConfig)
         {
             // Note: if only language is set, the default voice of that language is chosen.
-            //speechConfig.SpeechSynthesisLanguage = "<your-synthesis-language>"; // e.g. "de-DE"
-                                                                          // The voice setting will overwrite language setting.
-                                                                          // The voice setting will not overwrite the voice element in input SSML.
+            // speechConfig.SpeechSynthesisLanguage = "<your-synthesis-language>"; // e.g. "de-DE"
+            // The voice setting will overwrite language setting.
+            // The voice setting will not overwrite the voice element in input SSML.
             //speechConfig.SpeechSynthesisVoiceName = "ru-RU-DariyaNeural";
         }
 
+        public interface ISpeech
+        {
+
+        }
+
+        public async static Task Speech() : ISpeech
+        {
+
+        }
+
+
         public async static Task Speecher()
         {
-            var speechConfig = SpeechConfig.FromSubscription("d201cb5c2b814c719d199f12f7449b70", "westeurope");
+            
             //await Speecher_Language(speechConfig);
             //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
-            using var synthesizer = new SpeechSynthesizer(speechConfig);
+            
             //var botConfig = BotFr
             //await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
 

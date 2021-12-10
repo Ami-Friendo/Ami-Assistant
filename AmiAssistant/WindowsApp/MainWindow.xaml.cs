@@ -24,7 +24,7 @@ namespace WindowsApp
         public MainWindow()
         {
             InitializeComponent();
-            ni.Icon = new System.Drawing.Icon("1.ico");
+            //ni.Icon = new System.Drawing.Icon("1.ico");
         }
         private void Hidden_BTN_Click(object sender, RoutedEventArgs e)
         {
