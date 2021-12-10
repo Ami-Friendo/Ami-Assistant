@@ -166,8 +166,8 @@ namespace Speaker
             //await Speecher_Language(speechConfig);
             //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
             using var synthesizer = new SpeechSynthesizer(speechConfig);
-            var botConfig = BotFr
-            await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
+            //var botConfig = BotFr
+            //await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
 
         }
     }
