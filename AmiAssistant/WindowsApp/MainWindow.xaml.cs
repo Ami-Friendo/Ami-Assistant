@@ -46,6 +46,21 @@ namespace WindowsApp
         {
             // add fullscreen func
         }
+
+        private void Theme_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Setting_BTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Voice_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     #region Hide Button Click

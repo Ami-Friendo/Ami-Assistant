@@ -7,14 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
-    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.19.0" />
+    <Compile Remove="Image\**" />
+    <Compile Remove="MVVM\**" />
+    <Compile Remove="Theme\**" />
+    <EmbeddedResource Remove="Image\**" />
+    <EmbeddedResource Remove="MVVM\**" />
+    <EmbeddedResource Remove="Theme\**" />
+    <None Remove="Image\**" />
+    <None Remove="MVVM\**" />
+    <None Remove="Theme\**" />
+    <Page Remove="Image\**" />
+    <Page Remove="MVVM\**" />
+    <Page Remove="Theme\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Image\" />
-    <Folder Include="MVVM\" />
-    <Folder Include="Theme\" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.19.0" />
   </ItemGroup>
 
 </Project>
