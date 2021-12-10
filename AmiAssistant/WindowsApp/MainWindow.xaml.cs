@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace WindowsApp
 {
     /// <summary>
@@ -25,6 +24,7 @@ namespace WindowsApp
         public MainWindow()
         {
             InitializeComponent();
+            ni.Icon = new System.Drawing.Icon("1.ico");
         }
         private void Hidden_BTN_Click(object sender, RoutedEventArgs e)
         {
@@ -35,11 +35,10 @@ namespace WindowsApp
                 WindowState = WindowState.Normal;
             };
             this.Hide();
-        }
-
+        }   
         private void Close_BTN_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void FullScreen_BTN_Click(object sender, RoutedEventArgs e)

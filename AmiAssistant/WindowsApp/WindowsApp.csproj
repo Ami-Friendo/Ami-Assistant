@@ -7,16 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Image\**" />
     <Compile Remove="MVVM\**" />
     <Compile Remove="Theme\**" />
-    <EmbeddedResource Remove="Image\**" />
     <EmbeddedResource Remove="MVVM\**" />
     <EmbeddedResource Remove="Theme\**" />
-    <None Remove="Image\**" />
     <None Remove="MVVM\**" />
     <None Remove="Theme\**" />
-    <Page Remove="Image\**" />
     <Page Remove="MVVM\**" />
     <Page Remove="Theme\**" />
   </ItemGroup>
