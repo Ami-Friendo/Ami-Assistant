@@ -62,22 +62,4 @@ namespace WindowsApp
         }
     }
 
-    #region Hide Button Click
-    /*
-     
-    
-        public MainWindow()
-        {
-            InitializeComponent();
-            ni.Icon = new System.Drawing.Icon("111.ico");
-        }
-
-        private void Btn_Click(object sender, RoutedEventArgs e)
-        {
-            
-            Hide();
-        }
-
-     */
-    #endregion
 }
