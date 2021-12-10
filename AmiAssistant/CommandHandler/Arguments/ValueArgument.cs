@@ -28,8 +28,11 @@ namespace AmiFriendo.CommandHandler.Arguments
         }
         #endregion
 
-        public ValueArgument(string nameArgument = DEFAULT_NAME, bool isRequired = DEFAULT_REQUIRED)
+        public ValueArgument()
         {
+            string nameArgument = DEFAULT_NAME;
+            bool isRequired = DEFAULT_REQUIRED;
+
             _name = nameArgument;
             _isRequired = isRequired;
             _value = "default";

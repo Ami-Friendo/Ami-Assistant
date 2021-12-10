@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.IO;
 
 namespace AmiFriendo.CommandHandler.Arguments
 {
-    public class DirectoryArgument : IArgument
+    public class TimeArgument : IArgument
     {
-        const string DEFAULT_NAME = "directory";
+        const string DEFAULT_NAME = "time";
         const bool DEFAULT_REQUIRED = true;
 
         #region IArgumentImplementation
@@ -17,26 +16,34 @@ namespace AmiFriendo.CommandHandler.Arguments
             get => _friendlyName;
             set => _friendlyName = value;
         }
-        public string Description => "todo"; // Resources.ArgumentDescription.ValueArgument;
+        public string Description => "time, ex: 14:00"; // Resources.ArgumentDescription.ValueArgument;
         public string ExamplesInput => "todo"; // Resources.ArgumentExamplesInput.ValueArgument;
-        public string ExampleOutput => "todo"; //Resources.ArgumentExampleOutput.ValueArgument;
-        public string Value => _value.FullName;
+        public string ExampleOutput => "12:32:01 PM"; //Resources.ArgumentExampleOutput.ValueArgument;
+        public string Value => _time.ToLongTimeString();
         public bool IsRequired => _isRequired;
         public bool ParseValue(string inputValue)
         {
-            try
+            if (inputValue == "now")
             {
-                _value = new DirectoryInfo(inputValue);
-                return true;
+                _time = DateTime.Now;
             }
-            catch
+            else
             {
-                return false;
-            }
+                try
+                {
+                    _time = DateTime.Parse(inputValue);
+                }
+                catch
+                {
+                    return false;
+                }
+            } 
+
+            return true;
         }
         #endregion
 
-        public DirectoryArgument()
+        public TimeArgument()
         {
             string nameArgument = DEFAULT_NAME;
             bool isRequired = DEFAULT_REQUIRED;
@@ -46,8 +53,8 @@ namespace AmiFriendo.CommandHandler.Arguments
         }
 
         private string _name;
-        private DirectoryInfo _value;
-        private string _friendlyName = "todo"; // Resources.ArgumentFriendlyNames.ValueArgument;
+        private DateTime _time;
+        private string _friendlyName = "time"; // Resources.ArgumentFriendlyNames.ValueArgument;
         private bool _isRequired;
     }
 }

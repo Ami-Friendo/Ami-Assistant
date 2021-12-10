@@ -69,8 +69,8 @@ namespace AmiFriendo.CommandHandler.Actions
         {
             _name = nameAction;
 
-            InputArguments[0] = new ValueArgument(isRequired: true);
-            OutputArguments[0] = new ValueArgument(nameArgument: "return");
+            InputArguments[0] = new ValueArgument();
+            OutputArguments[0] = new ValueArgument();
         }
 
         private string _name;

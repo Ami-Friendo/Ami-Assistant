@@ -52,8 +52,8 @@ namespace AmiFriendo.CommandHandler.Actions
         {
             _name = nameAction;
 
-            InputArguments[0] = new DirectoryArgument(isRequired: true);
-            InputArguments[1] = new FileArgument(isRequired: true);
+            InputArguments[0] = new DirectoryArgument();
+            InputArguments[1] = new FileArgument();
         }
 
         private FileInfo getFile()

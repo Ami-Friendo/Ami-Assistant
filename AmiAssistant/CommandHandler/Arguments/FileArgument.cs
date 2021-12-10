@@ -39,8 +39,11 @@ namespace AmiFriendo.CommandHandler.Arguments
         }
         #endregion
 
-        public FileArgument(string nameArgument = DEFAULT_NAME, bool isRequired = DEFAULT_REQUIRED)
+        public FileArgument()
         {
+            string nameArgument = DEFAULT_NAME;
+            bool isRequired = DEFAULT_REQUIRED;
+
             _name = nameArgument;
             _isRequired = isRequired;
         }

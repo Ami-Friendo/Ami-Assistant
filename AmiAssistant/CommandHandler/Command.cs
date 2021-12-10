@@ -11,7 +11,6 @@ namespace AmiFriendo.CommandHandler
     {
         public List<string> Commands { get; } = new List<string>();
         public List<IAction> Actions { get; } = new List<IAction>();
-        //public CommandContext Context => _context;
 
         public string Execute()
         {
