@@ -24,7 +24,7 @@ namespace AmiFriendo.CommandHandler.Arguments
         public bool IsRequired => _isRequired;
         public bool ParseValue(string inputValue)
         {
-            const string pattern = @"^\w\w\w$";
+            const string pattern = @"^\w+$";
 
             if (Regex.Matches(inputValue, pattern, RegexOptions.IgnoreCase).Count == 0)
             {

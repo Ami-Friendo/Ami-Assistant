@@ -31,10 +31,9 @@ namespace AmiFriendo.CommandHandler.Actions
             if (!CanExecute())
                 throw new NonCanExecuteActionException();
 
-            ICryptoCurrency i = new CoinMarketCapClient();
-            var price = i.GetCurrencyBySymbol(InputArguments[0].Value, InputArguments[1].Value);
+            var price = client.GetCurrencyBySymbol(InputArguments[0].Value, InputArguments[1].Value);
 
-            context.Add("value", String.Format("{0:C2}", price).Substring(1) + InputArguments[1].Value);
+            context.Add("value", String.Format("{0:C3}", price).Substring(1) + " " + InputArguments[1].Value);
         }
 
         public bool CanExecute()
@@ -56,11 +55,14 @@ namespace AmiFriendo.CommandHandler.Actions
             InputArguments[0] = new CurrencyArgument();
             InputArguments[1] = new CurrencyArgument();
             OutputArguments[0] = new ValueArgument();
+
+            client = new CoinMarketCapClient();
         }
 
         private string _name;
         private string _friendlyName = "todo"; //Resources.ActionFriendlyName.ReturnAction;
         private IArgument[] _inputArguments = new IArgument[2];
         private IArgument[] _outputArguments = new IArgument[1];
+        private ICryptoCurrency client;
     }
 }

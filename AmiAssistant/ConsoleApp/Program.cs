@@ -67,6 +67,7 @@ namespace AmiFriendo.ConsoleApp
 
                 Command command5 = new();
                 command5.Commands.Add("bitcoin");
+                command5.Commands.Add("btc");
                 command5.Actions.Add(new CurrencyPriceAction());
                 command5.Actions[0].InputArguments[0].ParseValue("btc");
                 command5.Actions[0].InputArguments[1].ParseValue("usd");
@@ -82,6 +83,15 @@ namespace AmiFriendo.ConsoleApp
                 command6.Actions.Add(new ReturnAction());
                 command6.Actions[1].InputArguments[0].ParseValue($"$(carg:value)");
                 cs.Commands.Add(command6);
+
+                Command command7 = new();
+                command7.Commands.Add("dogecoin");
+                command7.Actions.Add(new CurrencyPriceAction());
+                command7.Actions[0].InputArguments[0].ParseValue("doge");
+                command7.Actions[0].InputArguments[1].ParseValue("usdt");
+                command7.Actions.Add(new ReturnAction());
+                command7.Actions[1].InputArguments[0].ParseValue($"$(carg:value)");
+                cs.Commands.Add(command7);
 
                 while (true)
                 {
