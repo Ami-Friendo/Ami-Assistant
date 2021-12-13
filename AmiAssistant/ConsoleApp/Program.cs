@@ -8,6 +8,9 @@ using AmiFriendo.CommandHandler.Exceptions;
 using AmiFriendo.CommandHandler.Actions;
 using AmiFriendo.CommandHandler.Arguments;
 
+using AmiFriendo.AuxiliaryFunctions;
+using AmiFriendo.AuxiliaryFunctions.ClientInterfaces;
+
 namespace AmiFriendo.ConsoleApp
 {
     using CommandContext = Dictionary<string, string>;
@@ -29,7 +32,7 @@ namespace AmiFriendo.ConsoleApp
                 // create command hardcode
                 Command command1 = new();
                 command1.Commands.Add("command first");
-                command1.Commands.Add("command 1");
+                command1.Commands.Add("launch notepad");
                 command1.Actions.Add(new ExecuteAction());
                 command1.Actions[0].InputArguments[0].ParseValue(@"C:\Program Files (x86)\Notepad++");
                 command1.Actions[0].InputArguments[1].ParseValue(@"notepad++.exe");
@@ -43,7 +46,7 @@ namespace AmiFriendo.ConsoleApp
                 command2.Actions.Add(new TestAction());
                 command2.Actions[0].InputArguments[0].ParseValue("5");
                 command2.Actions[0].InputArguments[1].ParseValue("7");
-                var output = command2.Actions[0].OutputArguments[0].Name; // value
+                // var output = command2.Actions[0].OutputArguments[0].Name; // value
 
                 command2.Actions.Add(new ReturnAction());
                 command2.Actions[1].InputArguments[0].ParseValue($"Результат $(carg:value).");
@@ -55,13 +58,30 @@ namespace AmiFriendo.ConsoleApp
                 command3.Actions.Add(new ReturnAction());
                 command3.Actions[0].InputArguments[0].ParseValue($"$(TimeArgument:now)");
                 cs.Commands.Add(command3);
-
-
+                
                 Command command4 = new();
                 command4.Commands.Add("show date");
                 command4.Actions.Add(new ReturnAction());
                 command4.Actions[0].InputArguments[0].ParseValue($"$(DateArgument:now)");
                 cs.Commands.Add(command4);
+
+                Command command5 = new();
+                command5.Commands.Add("bitcoin");
+                command5.Actions.Add(new CurrencyPriceAction());
+                command5.Actions[0].InputArguments[0].ParseValue("btc");
+                command5.Actions[0].InputArguments[1].ParseValue("usd");
+                command5.Actions.Add(new ReturnAction());
+                command5.Actions[1].InputArguments[0].ParseValue($"$(carg:value)");
+                cs.Commands.Add(command5);
+
+                Command command6 = new();
+                command6.Commands.Add("bitcoin uah");
+                command6.Actions.Add(new CurrencyPriceAction());
+                command6.Actions[0].InputArguments[0].ParseValue("btc");
+                command6.Actions[0].InputArguments[1].ParseValue("uah");
+                command6.Actions.Add(new ReturnAction());
+                command6.Actions[1].InputArguments[0].ParseValue($"$(carg:value)");
+                cs.Commands.Add(command6);
 
                 while (true)
                 {

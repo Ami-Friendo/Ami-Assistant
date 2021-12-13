@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AuxiliaryFunctions\AuxiliaryFunctions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\ActionDescription.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
