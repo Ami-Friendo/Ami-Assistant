@@ -155,27 +155,27 @@ namespace Speaker
             //speechConfig.SpeechSynthesisVoiceName = "ru-RU-DariyaNeural";
         }
 
-        //    public interface ISpeech
-        //    {
+        //public interface ISpeech
+        //{
 
-        //    }
-
-        //    public async static Task Speech() : ISpeech
-        //    {
-
-        //    }
-
-
-        //    public async static Task Speecher()
-        //    {
-
-        //        //await Speecher_Language(speechConfig);
-        //        //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
-
-        //        //var botConfig = BotFr
-        //        //await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
-
-        //    }
         //}
-    }   
+
+        //public async static Task Speech() : ISpeech
+        //{
+
+        //}
+
+
+        //public async static Task Speecher()
+        //{
+            
+        //    //await Speecher_Language(speechConfig);
+        //    //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
+            
+        //    //var botConfig = BotFr
+        //    //await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
+
+        //}
+    }
+    
 }
