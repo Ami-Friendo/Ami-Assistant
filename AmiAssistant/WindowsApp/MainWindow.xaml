@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WindowsApp"
-        mc:Ignorable="d"        
+        mc:Ignorable="d"
         xmlns:tb="http://www.hardcodet.net/taskbar"
-        Height="600" Width="500"
+        Height="600" Width="700"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -20,152 +21,206 @@
     -->
     <Border Background="#274082"
             CornerRadius="20"
+            Name="MainBorder"
             >
-        <Grid>
+        <materialDesign:DrawerHost
+                x:Name="DrawerHost"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                BorderThickness="2"
+                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                BottomDrawerCornerRadius="20 20 0 0"
+                BottomDrawerBackground="{DynamicResource SecondaryHueLightBrush}">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="250" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+            <materialDesign:DrawerHost.Style>
 
-            <Grid.RowDefinitions>
-                <!--Top Buttons menu-->
-                <RowDefinition Height="75" MinHeight="20" MaxHeight="30"/>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+                <Style TargetType="materialDesign:DrawerHost" BasedOn="{StaticResource {x:Type materialDesign:DrawerHost}}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=BackgroundToggle}" Value="True">
+                            <Setter Property="OverlayBackground" Value="{DynamicResource PrimaryHueDarkBrush}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
 
-            <!--Splitter-->
-            <GridSplitter Grid.Row="0" 
-                          Grid.Column="2" 
-                          Width="130" 
-                          Height="2"
-                          Background="White"
-                          HorizontalAlignment="Stretch" 
-                          VerticalAlignment="Bottom">
-                
-            </GridSplitter>
-            
-            <!--Hidden Button-->
-            <StackPanel Grid.Row="0" Grid.Column="2">
-                <Button Width="20" Height="20" 
-                        HorizontalAlignment="Left" 
-                        Margin="5" 
+            </materialDesign:DrawerHost.Style>
+
+            <materialDesign:DrawerHost.RightDrawerContent>
+                <StackPanel Margin="16">
+                    <TextBlock
+                            Margin="4"
+                            HorizontalAlignment="Center"
+                            Text=""/>
+                    <Button
+                            Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                            CommandParameter="{x:Static Dock.Right}"
+                            Margin="4"
+                            HorizontalAlignment="Center"
+                            Style="{DynamicResource MaterialDesignFlatButton}"
+                            Content="CLOSE"/>
+                    <!--<Button
+                            Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                            Margin="4"
+                            HorizontalAlignment="Center"
+                            Style="{DynamicResource MaterialDesignFlatButton}"
+                            Content="CLOSE ALL"/>-->
+                </StackPanel>
+            </materialDesign:DrawerHost.RightDrawerContent>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Label Ami-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Ami-Assistant"
+                           Foreground="White"
+                           FontSize="22"
+                           Margin="20 0 0 0"
+                           >
+
+                    </TextBlock>
+
+                </StackPanel>
+                <!--TOP BTN-->
+                <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Width="20" Height="20" 
+                        Margin="0 3 10 0" 
                         Name="Hidden_BTN" 
                         Click="Hidden_BTN_Click"
                         >
-                    <Button.Template>
-                        <ControlTemplate  TargetType="Button">
-                            <Grid>
-                                <Ellipse Fill="Green"></Ellipse>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Ellipse Fill="Green"></Ellipse>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
 
-            <!--FullScreen Button-->
-            <StackPanel Grid.Row="0" Grid.Column="2">
-
-                <Button Width="20" Height="20" 
-                        HorizontalAlignment="Center" 
-                        Margin="5" 
-                        Name="FullScreen_BTN"
-                        Click="FullScreen_BTN_Click"
-                        >
-                    <Button.Template>
-                        <ControlTemplate  TargetType="Button">
-                            <Grid>
-                                <Ellipse Fill="Orange"></Ellipse>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
-
-            <!--Close Button-->
-            <StackPanel Grid.Row="0" Grid.Column="2">
-                <Button Width="20" Height="20" 
-                        HorizontalAlignment="Right" 
-                        Margin="5" 
+                    <Button Width="20" Height="20" 
+                        Margin="0 3 10 0" 
                         Name="Close_BTN" 
                         Click="Close_BTN_Click"
                         >
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Ellipse Fill="Red"></Ellipse>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Ellipse Fill="Red"></Ellipse>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+                <!--Theme || Settings BTN-->
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal" Margin="20 0 0 0" >
+                    <RadioButton
+                Style="{StaticResource MaterialDesignChoiceChipPrimaryRadioButton}"
+                IsChecked="True"
+                GroupName="GroupChoiceChip">Light Theme
+                    </RadioButton>
+                    <RadioButton
+                    Style="{StaticResource MaterialDesignChoiceChipRadioButton}"
+                    GroupName="GroupChoiceChip">Dark Theme
+                    </RadioButton>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
+                        Margin="5">
+
+                    <!--Settings BTN-->
+                    <Grid
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                        Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                        CommandParameter="{x:Static Dock.Right}"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="4"
+                        Content="{materialDesign:PackIcon Kind=Cog}"/>
+                    </Grid>
+                </StackPanel>
+                <!--Input Box Pannel-->
+                <!--
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+                <TextBox Width="700" Height="80" VerticalAlignment="Center"
+                         HorizontalAlignment="Center" Margin="5"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         />
+            </StackPanel>-->
+
+                <!--Assistent Message-->
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
+                    <TextBlock 
+             Height="300" Width="700" 
+             TextWrapping="Wrap"
+             VerticalAlignment="Top"
+             HorizontalAlignment="Left"
+             Style="{StaticResource MaterialDesignBody1TextBlock}"
+             x:Name="TextBlock_Text">
+                <Run x:Name="Tst"></Run>
+                <Run></Run>
+                    </TextBlock>
+                </StackPanel>
+                
+                <!--TextBox Command-->
+                <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" CornerRadius="20" Background="#278268" Margin="6">
+                    <TextBox  
+                     Height="50" Width="650" 
+                     AcceptsReturn="False"
+                     VerticalScrollBarVisibility="Hidden"
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     materialDesign:HintAssist.Hint="Ami"
+                     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" 
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     FontSize="30"
+                     Foreground="Black"
+                     Padding="0 0 40 0"
+                     Text="{Binding SearchText, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     KeyDown="OnKeyDownHandler"
+                     x:Name="User_Text"
+                     >
+                        
+                    </TextBox>
+                </Border>
+                
+                <!--Voice BTN-->
+                <Button 
+                Background="#276e82"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Grid.Row="4" Grid.Column="1"
+                Height="100" Width="100"
+                VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                >
+                    <!--Microphone icon-->
+                    <materialDesign:PackIcon Kind="MicrophoneOutline" Height="75" Width="75"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center"/>
                 </Button>
-            </StackPanel>
-
-            <StackPanel Grid.Row="1" Grid.Column="0">
-                <!--Theme Button-->
-                <Button Width="120" Height="50"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Margin="0 20 0 0"
-                        Name="Theme_Button"
-                        Click="Theme_Button_Click"
-                        >
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Border Background="#cad149" CornerRadius="20">
-                                    <Ellipse Fill="Transparent">
-                                    </Ellipse>
-                                </Border>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-
-                </Button>
-            </StackPanel>
-
-            <StackPanel Grid.Row="1" Grid.Column="2">
-                <!--Setting Button-->
-                <Button Width="100" Height="50"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="22"
-                        Margin="0,0,20,0"
-                        Content="Settings" Name="Setting_BTN" Click="Setting_BTN_Click"
-                         ></Button>
-
-            </StackPanel>
-            
-            <!--Voice Button-->
-            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical">
-                <Button Width="120" Height="120" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center"
-                        Margin="35" 
-                        Name="Voice_Button"
-                        Click="Voice_Button_Click"
-                        >
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Ellipse>
-                                    <Ellipse.Fill>
-                                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                                            <GradientStop Color="#286352 " Offset="0"></GradientStop>
-                                            <GradientStop Color="#33a685" Offset="0.6"></GradientStop>
-                                            <GradientStop Color="#5aedc3" Offset="1"></GradientStop>
-                                        </LinearGradientBrush>
-                                    </Ellipse.Fill>
-                                </Ellipse>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-                    
-                </Button>
-            </StackPanel>
-            <!--Text-->
-        </Grid>
+                
+            </Grid>
+        </materialDesign:DrawerHost>
     </Border>
 </Window>

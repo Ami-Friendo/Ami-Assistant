@@ -24,8 +24,13 @@ namespace WindowsApp
         public MainWindow()
         {
             InitializeComponent();
-            //ni.Icon = new System.Drawing.Icon("1.ico");
+
+            //ni.Icon = new System.Drawing.Icon("Hidden_Icon.ico");
+
+            //Form move
+            MainBorder.MouseLeftButtonDown += new MouseButtonEventHandler(layoutRoot_MouseLeftButtonDown);
         }
+
         private void Hidden_BTN_Click(object sender, RoutedEventArgs e)
         {
             ni.Visible = true;
@@ -35,31 +40,34 @@ namespace WindowsApp
                 WindowState = WindowState.Normal;
             };
             this.Hide();
-        }   
+        }
         private void Close_BTN_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
-        private void FullScreen_BTN_Click(object sender, RoutedEventArgs e)
+        //Form move
+        void layoutRoot_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // add fullscreen func
+            this.DragMove();
         }
 
-        private void Theme_Button_Click(object sender, RoutedEventArgs e)
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Return)
+            {
+                Tst.Text = User_Text.Text;
+            }
         }
 
-        private void Setting_BTN_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Theme_Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //}
 
-        }
+        //private void Voice_Button_Click(object sender, RoutedEventArgs e)
+        //{
 
-        private void Voice_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        //}
     }
 
 }
