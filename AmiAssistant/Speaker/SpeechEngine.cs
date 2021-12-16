@@ -14,9 +14,9 @@ using System.IO.IsolatedStorage;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
-namespace Speaker
+namespace Speaker_Engine
 {
-    class Talker
+    public class Talker
     {
         public static async Task RecognitionWithAutoDetectSourceLanguageAsync(SpeechConfig config)
         {
@@ -108,27 +108,30 @@ namespace Speaker
             using var synthesizer = new SpeechSynthesizer(speechConfig);
         }
 
-        public async static Task Speecher_Language(SpeechConfig speechConfig)
+        public async static Task<string> Speecher_Language(SpeechConfig speechConfig, string respond)
         {
 
             // can switch "Latency" to "Accuracy" depending on priority
             speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
+            var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "ru-RU" });
+
 
             //var autoDetectSourceLanguageConfig =
             //    AutoDetectSourceLanguageConfig.FromLanguages(
             //        new string[] { "en-US", "de-DE", "ru-RU" });
 
-            var sourceLanguageConfigs = new SourceLanguageConfig[]
-{
-    SourceLanguageConfig.FromLanguage("en-US"),
-    SourceLanguageConfig.FromLanguage("ru-RU", "The Endpoint Id for custom model of fr-FR")
-};
+//            var sourceLanguageConfigs = new SourceLanguageConfig[]
+//{
+//    SourceLanguageConfig.FromLanguage("en-US"),
+//    SourceLanguageConfig.FromLanguage("ru-RU", "The Endpoint Id for custom model of ru-RU")
+//};
 
-            var autoDetectSourceLanguageConfig =
-    AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(
-        sourceLanguageConfigs);
+//            var autoDetectSourceLanguageConfig =
+//    AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(
+//        sourceLanguageConfigs);
 
             using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+            using var synthesizer = new SpeechSynthesizer(speechConfig);
             using (var recognizer = new SpeechRecognizer(
                 speechConfig,
                 autoDetectSourceLanguageConfig,
@@ -138,9 +141,13 @@ namespace Speaker
                 var autoDetectSourceLanguageResult =
                     AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
                 var detectedLanguage = autoDetectSourceLanguageResult.Language;
-                //var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+                var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+                respond = result.Text;
+                return respond;
+                //await synthesizer.SpeakTextAsync($"{result.Text}");
+                
                 //Console.WriteLine($"RECOGNIZED: Text={result.Text}");
-                Console.WriteLine($"Language: {detectedLanguage}");
+                //Console.WriteLine($"Language: {detectedLanguage}");
             }
 
 
@@ -166,16 +173,18 @@ namespace Speaker
         //    }
 
 
-        //    public async static Task Speecher()
-        //    {
+        public async static Task<string> Speecher(string respond)
+        {
+            var speechConfig = SpeechConfig.FromSubscription("d201cb5c2b814c719d199f12f7449b70", "westeurope");
+            using var synthesizer = new SpeechSynthesizer(speechConfig);
+            respond = await Speecher_Language(speechConfig, respond);
+            return respond;
+            //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
 
-        //        //await Speecher_Language(speechConfig);
-        //        //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
+            //var botConfig = BotFr
+            //await synthesizer.SpeakTextAsync();
 
-        //        //var botConfig = BotFr
-        //        //await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
+        }
+    }
 
-        //    }
-        //}
-    }   
-}
+}   

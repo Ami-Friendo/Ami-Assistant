@@ -14,14 +14,18 @@ using System.IO.IsolatedStorage;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
-namespace Speaker
+namespace Speaker_Engine
 {
-    class Program
+    public class Listen
     {
-        async static Task Main(string[] args)
+        static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            await Talker.Speecher();
+
+        }
+        public static string respond;
+        public async static Task Speaker()
+        {
+            respond = await Talker.Speecher(respond);
         }
     }
 }

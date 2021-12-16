@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Speaker_Engine;
 
 namespace WindowsApp
 {
@@ -58,16 +59,24 @@ namespace WindowsApp
             {
                 Tst.Text = User_Text.Text;
             }
+            
         }
 
         //private void Theme_Button_Click(object sender, RoutedEventArgs e)
         //{
         //}
 
-        //private void Voice_Button_Click(object sender, RoutedEventArgs e)
-        //{
+        private async Task Voice_Button_ClickAsync(object sender, RoutedEventArgs e)
+        {
+         
+        }
 
-        //}
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await Listen.Speaker();
+            string res = Listen.respond;
+            Tst.Text = res;
+        }
     }
 
 }

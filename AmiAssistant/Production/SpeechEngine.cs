@@ -166,16 +166,18 @@ namespace Speaker
         //}
 
 
-        //public async static Task Speecher()
-        //{
-            
-        //    //await Speecher_Language(speechConfig);
-        //    //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
-            
-        //    //var botConfig = BotFr
-        //    //await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
+        public async static Task Speecher()
+        {
+            var speechConfig = SpeechConfig.FromSubscription("d201cb5c2b814c719d199f12f7449b70", "westeurope");
+            using var synthesizer = new SpeechSynthesizer(speechConfig);
 
-        //}
+            //await Speecher_Language(speechConfig);
+            await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
+
+            //var botConfig = BotFr
+            //await synthesizer.SpeakTextAsync("Заплати майкрософт, или они прийдут за тобой...");
+
+        }
     }
     
 }

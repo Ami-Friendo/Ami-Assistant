@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Speaker;
 
 namespace WindowsApp
 {
@@ -35,7 +36,7 @@ namespace WindowsApp
                 WindowState = WindowState.Normal;
             };
             this.Hide();
-        }   
+        }
         private void Close_BTN_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -58,8 +59,7 @@ namespace WindowsApp
 
         private void Voice_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Talker.Speecher();
         }
     }
-
 }

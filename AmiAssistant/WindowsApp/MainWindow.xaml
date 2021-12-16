@@ -212,7 +212,7 @@
                 Grid.Row="4" Grid.Column="1"
                 Height="100" Width="100"
                 VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Center" Click="Button_Click"
                 >
                     <!--Microphone icon-->
                     <materialDesign:PackIcon Kind="MicrophoneOutline" Height="75" Width="75"

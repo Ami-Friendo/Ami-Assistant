@@ -14,9 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuxiliaryFunctions", "AuxiliaryFunctions\AuxiliaryFunctions.csproj", "{37068D6F-0F4A-45F3-9CCA-9E3EB115F38C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Speaker", "Speaker\Speaker.csproj", "{22A997FD-09ED-480D-8793-059D47F2D600}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Speaker_Engine", "Speaker\Speaker_Engine.csproj", "{22A997FD-09ED-480D-8793-059D47F2D600}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Production", "Production\Production.csproj", "{905CC355-744C-4CEF-AD18-3BDE88DFFF73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Production", "Production\Production.csproj", "{905CC355-744C-4CEF-AD18-3BDE88DFFF73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
