@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 using AmiFriendo.CommandHandler.Actions;
 
@@ -12,9 +13,10 @@ namespace AmiFriendo.CommandHandler
         public List<string> Commands { get; } = new List<string>();
         public List<IAction> Actions { get; } = new List<IAction>();
 
-        public string Execute()
+        public string Execute(CommandContext cc)
         {
-            _context = new CommandContext();
+            _context = cc;
+
             foreach (var action in Actions)
             {
                 action.Execute(ref _context);
@@ -28,6 +30,11 @@ namespace AmiFriendo.CommandHandler
             {
                 return null;
             }
+        }
+        public string Execute()
+        {
+            _context = new CommandContext();
+            return Execute(_context);
         }
 
         private CommandContext _context;

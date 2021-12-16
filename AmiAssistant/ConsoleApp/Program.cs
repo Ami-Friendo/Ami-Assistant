@@ -93,6 +93,15 @@ namespace AmiFriendo.ConsoleApp
                 command7.Actions[1].InputArguments[0].ParseValue($"$(carg:value)");
                 cs.Commands.Add(command7);
 
+                Command command8 = new();
+                command8.Commands.Add("show rate $(carg:bitcoin) in $(carg:currency)");
+                command8.Actions.Add(new CurrencyPriceAction());
+                command8.Actions[0].InputArguments[0].ParseValue("$(carg:bitcoin)");
+                command8.Actions[0].InputArguments[1].ParseValue("$(carg:currency)");
+                command8.Actions.Add(new ReturnAction());
+                command8.Actions[1].InputArguments[0].ParseValue($"$(carg:value)");
+                cs.Commands.Add(command8);
+
                 while (true)
                 {
                     Console.Write("Enter your command -> ");
@@ -102,7 +111,6 @@ namespace AmiFriendo.ConsoleApp
                     Console.WriteLine();
                 }
             }
-
             ///
             /// other test
             ///

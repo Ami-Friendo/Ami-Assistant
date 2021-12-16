@@ -28,6 +28,9 @@ namespace AmiFriendo.CommandHandler.Actions
 
         public void Execute(ref CommandContext context)
         {
+            ArgumentReplacer ar = new ArgumentReplacer();
+            ar.InitInputArgumentsByContext(InputArguments, context);
+
             if (!CanExecute())
                 throw new NonCanExecuteActionException();
 
