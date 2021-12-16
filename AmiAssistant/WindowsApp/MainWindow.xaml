@@ -19,6 +19,83 @@
      #274082
      #276e82
     -->
+    <!--#region Bubble Style-->
+    <Window.Resources>
+        <Style x:Key="Bubble" TargetType="Control">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Control">
+                        <Grid SnapsToDevicePixels="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Polygon Grid.Row="0" Grid.Column="0" Points="0 10, 10 0, 10 10" Fill="{TemplateBinding Background}"/>
+                            <Rectangle Grid.Row="0" Grid.Column="1" Fill="{TemplateBinding Background}"/>
+                            <Polygon Grid.Row="0" Grid.Column="2" Points="0 0, 10 10, 0 10" Fill="{TemplateBinding Background}"/>
+                            <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Fill="{TemplateBinding Background}"/>
+                            <Polygon Grid.Row="2" Grid.Column="0" Points="0 0, 10 0, 10 10, 8 8, 0 10, 5 5" Fill="{TemplateBinding Background}"/>
+                            <Rectangle Grid.Row="2" Grid.Column="1" Fill="{TemplateBinding Background}"/>
+                            <Polygon Grid.Row="2" Grid.Column="2" Points="0 0, 10 0, 0 10" Fill="{TemplateBinding Background}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="WrapStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <!--Left Bubble-->
+        <Style x:Key="BubbleLeftStyle" TargetType="ContentControl">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="8 5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Grid Margin="{TemplateBinding Margin}">
+                            <Control Style="{StaticResource Bubble}" Background="LimeGreen"/>
+                            <ContentPresenter Margin="{TemplateBinding Padding}">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource WrapStyle}"/>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Right Bubble-->
+        <Style x:Key="BubbleRightStyle" TargetType="ContentControl" BasedOn="{StaticResource BubbleLeftStyle}">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Grid Margin="{TemplateBinding Margin}">
+                            <Control Style="{StaticResource Bubble}" Background="DeepSkyBlue" RenderTransformOrigin=".5 0">
+                                <Control.RenderTransform>
+                                    <ScaleTransform ScaleX="-1"/>
+                                </Control.RenderTransform>
+                            </Control>
+                            <ContentPresenter Margin="{TemplateBinding Padding}">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource WrapStyle}"/>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <!--#endregion-->
+    
     <Border Background="#274082"
             CornerRadius="20"
             Name="MainBorder"
@@ -57,12 +134,6 @@
                             HorizontalAlignment="Center"
                             Style="{DynamicResource MaterialDesignFlatButton}"
                             Content="CLOSE"/>
-                    <!--<Button
-                            Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
-                            Margin="4"
-                            HorizontalAlignment="Center"
-                            Style="{DynamicResource MaterialDesignFlatButton}"
-                            Content="CLOSE ALL"/>-->
                 </StackPanel>
             </materialDesign:DrawerHost.RightDrawerContent>
 
@@ -159,15 +230,7 @@
                         Content="{materialDesign:PackIcon Kind=Cog}"/>
                     </Grid>
                 </StackPanel>
-                <!--Input Box Pannel-->
-                <!--
-            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
-                <TextBox Width="700" Height="80" VerticalAlignment="Center"
-                         HorizontalAlignment="Center" Margin="5"
-                         Style="{StaticResource MaterialDesignTextBox}"
-                         />
-            </StackPanel>-->
-
+                
                 <!--Assistent Message-->
                 <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
                     <TextBlock 
@@ -177,8 +240,11 @@
              HorizontalAlignment="Left"
              Style="{StaticResource MaterialDesignBody1TextBlock}"
              x:Name="TextBlock_Text">
-                <Run x:Name="Tst"></Run>
-                <Run></Run>
+                        <!--#region TextBlock Message-->
+                    <StackPanel Name="Chat_Panel">
+                        <ContentControl Content="Text" Style="{StaticResource BubbleLeftStyle}"></ContentControl>
+                    </StackPanel>
+                        <!--#endregion-->
                     </TextBlock>
                 </StackPanel>
                 

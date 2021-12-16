@@ -21,6 +21,8 @@ namespace WindowsApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ContentControl User_Bubble = new ContentControl();
+
         System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
         public MainWindow()
         {
@@ -30,6 +32,7 @@ namespace WindowsApp
 
             //Form move
             MainBorder.MouseLeftButtonDown += new MouseButtonEventHandler(layoutRoot_MouseLeftButtonDown);
+
         }
 
         private void Hidden_BTN_Click(object sender, RoutedEventArgs e)
@@ -57,25 +60,29 @@ namespace WindowsApp
         {
             if (e.Key == Key.Return)
             {
-                Tst.Text = User_Text.Text;
+
+                User_Bubble.Content = User_Text.Text;
+
+                User_Bubble.Style = (Style)User_Bubble.FindResource("BubbleRightStyle");
+                Chat_Panel.Children.Add(User_Bubble);
+
             }
-            
         }
 
         //private void Theme_Button_Click(object sender, RoutedEventArgs e)
         //{
         //}
 
-        private async Task Voice_Button_ClickAsync(object sender, RoutedEventArgs e)
-        {
+        //private async Task Voice_Button_ClickAsync(object sender, RoutedEventArgs e)
+        //{
          
-        }
+        //}
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            await Listen.Speaker();
-            string res = Listen.respond;
-            Tst.Text = res;
+        //    await Listen.Speaker();
+        //    string res = Listen.respond;
+        //    //Tst.Text = res;
         }
     }
 
