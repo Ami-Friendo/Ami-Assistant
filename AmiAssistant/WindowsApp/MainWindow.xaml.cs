@@ -30,7 +30,7 @@ namespace WindowsApp
         public MainWindow()
         {
             InitializeComponent();
-            //ni.Icon = Resource1.Hidden_Icon;
+            ni.Icon = Resource1.Hidden_Icon;
 
             //Form move
             MainBorder.MouseLeftButtonDown += new MouseButtonEventHandler(layoutRoot_MouseLeftButtonDown);
