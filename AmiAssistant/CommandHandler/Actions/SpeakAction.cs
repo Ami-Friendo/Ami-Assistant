@@ -4,6 +4,7 @@ using System.Text;
 
 using AmiFriendo.CommandHandler.Arguments;
 using AmiFriendo.CommandHandler.Exceptions;
+using AmiFriendo.AuxiliaryFunctions;
 
 namespace AmiFriendo.CommandHandler.Actions
 {
@@ -31,7 +32,7 @@ namespace AmiFriendo.CommandHandler.Actions
             if (!CanExecute())
                 throw new NonCanExecuteActionException();
 
-            /////
+            Speaker_Engine.Talker.Speecher_Voice(InputArguments[0].Value);
         }
 
         public bool CanExecute()

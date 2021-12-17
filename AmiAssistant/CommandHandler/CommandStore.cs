@@ -160,22 +160,22 @@ namespace AmiFriendo.CommandHandler
             command.Actions[0].InputArguments[0].ParseValue(@"C:\Windows\System32");
             command.Actions[0].InputArguments[1].ParseValue(@"calc.exe");
             command.Actions.Add(new SpeakAction());
-            command.Actions[1].InputArguments[0].ParseValue(@"калькулятор запущен");
+            command.Actions[1].InputArguments[0].ParseValue(@"launched");
             command.Actions.Add(new ReturnAction());
             command.Actions[2].InputArguments[0].ParseValue(@"launched");
             Commands.Add(command);
 
-            command = new Command();
-            command.Commands.Add("запусти командную строку");
-            command.Commands.Add("start a command line");
-            command.Actions.Add(new ExecuteAction());
-            command.Actions[0].InputArguments[0].ParseValue(@"C:\Windows\System32");
-            command.Actions[0].InputArguments[1].ParseValue(@"cmd.exe");
-            command.Actions.Add(new SpeakAction());
-            command.Actions[1].InputArguments[0].ParseValue(@"командная строка запущенна");
-            command.Actions.Add(new ReturnAction());
-            command.Actions[2].InputArguments[0].ParseValue(@"launched");
-            Commands.Add(command);
+            //command = new Command();
+            //command.Commands.Add("запусти командную строку");
+            //command.Commands.Add("start a command line");
+            //command.Actions.Add(new ExecuteAction());
+            //command.Actions[0].InputArguments[0].ParseValue(@"C:\Windows\System32");
+            //command.Actions[0].InputArguments[1].ParseValue(@"cmd.exe");
+            //command.Actions.Add(new SpeakAction());
+            //command.Actions[1].InputArguments[0].ParseValue(@"командная строка запущенна");
+            //command.Actions.Add(new ReturnAction());
+            //command.Actions[2].InputArguments[0].ParseValue(@"launched");
+            //Commands.Add(command);
         }
     }
 }

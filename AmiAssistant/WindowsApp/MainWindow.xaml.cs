@@ -34,7 +34,6 @@ namespace WindowsApp
             //Form move
             MainBorder.MouseLeftButtonDown += new MouseButtonEventHandler(layoutRoot_MouseLeftButtonDown);
 
-
             // autorun
             SetAutorunValue(true);
         }
