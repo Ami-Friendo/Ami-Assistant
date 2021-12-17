@@ -25,7 +25,7 @@ namespace Speaker_Engine
         public static string respond;
         public async static Task Speaker()
         {
-            respond = await Talker.Speecher(respond);
+            respond = await Talker.Speecher_Listen(respond);
         }
         public async static Task Speaker_Talk(string answer)
         {

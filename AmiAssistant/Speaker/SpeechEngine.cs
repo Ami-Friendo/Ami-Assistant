@@ -108,50 +108,53 @@ namespace Speaker_Engine
             return speechConfig;
         }
 
-        public async static Task<string> Speecher_Language(SpeechConfig speechConfig, string respond)
+        public async static Task<string> Speecher_Listen(string respond)
         {
 
+            using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+            using var recognizer = new SpeechRecognizer((SpeechConfig)Speecher_Settings(), audioConfig);
+
+            var result = await recognizer.RecognizeOnceAsync();
+            return result.Text;
             // can switch "Latency" to "Accuracy" depending on priority
-            speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
-            var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "ru-RU" });
+            //speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
+            //var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "ru-RU" });
 
 
             //var autoDetectSourceLanguageConfig =
             //    AutoDetectSourceLanguageConfig.FromLanguages(
             //        new string[] { "en-US", "de-DE", "ru-RU" });
 
-//            var sourceLanguageConfigs = new SourceLanguageConfig[]
-//{
-//    SourceLanguageConfig.FromLanguage("en-US"),
-//    SourceLanguageConfig.FromLanguage("ru-RU", "The Endpoint Id for custom model of ru-RU")
-//};
+            //            var sourceLanguageConfigs = new SourceLanguageConfig[]
+            //{
+            //    SourceLanguageConfig.FromLanguage("en-US"),
+            //    SourceLanguageConfig.FromLanguage("ru-RU", "The Endpoint Id for custom model of ru-RU")
+            //};
 
-//            var autoDetectSourceLanguageConfig =
-//    AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(
-//        sourceLanguageConfigs);
+            //            var autoDetectSourceLanguageConfig =
+            //    AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(
+            //        sourceLanguageConfigs);
 
-            using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-            using var synthesizer = new SpeechSynthesizer(speechConfig);
-            using (var recognizer = new SpeechRecognizer(
-                speechConfig,
-                autoDetectSourceLanguageConfig,
-                audioConfig))
-            {
-                var speechRecognitionResult = await recognizer.RecognizeOnceAsync();
-                var autoDetectSourceLanguageResult =
-                    AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
-                var detectedLanguage = autoDetectSourceLanguageResult.Language;
-                var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
-                respond = result.Text;
-                return respond;
-                //await synthesizer.SpeakTextAsync($"{result.Text}");
-                
-                //Console.WriteLine($"RECOGNIZED: Text={result.Text}");
-                //Console.WriteLine($"Language: {detectedLanguage}");
-            }
+            //using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+            //using var synthesizer = new SpeechSynthesizer(speechConfig);
+            //using (var recognizer = new SpeechRecognizer(
+            //    speechConfig,
+            //    autoDetectSourceLanguageConfig,
+            //    audioConfig))
+            //{
+            //    var speechRecognitionResult = await recognizer.RecognizeOnceAsync();
+            //    var autoDetectSourceLanguageResult =
+            //        AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
+            //    var detectedLanguage = autoDetectSourceLanguageResult.Language;
+            //    var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+            //    respond = result.Text;
+            //    return respond;
+            //await synthesizer.SpeakTextAsync($"{result.Text}");
 
-
+            //Console.WriteLine($"RECOGNIZED: Text={result.Text}");
+            //Console.WriteLine($"Language: {detectedLanguage}");
         }
+
 
         public static async Task Speecher_Voice(string answer)
         {
@@ -175,18 +178,18 @@ namespace Speaker_Engine
         //    }
 
 
-        public async static Task<string> Speecher(string respond)
-        {
-            var speechConfig = SpeechConfig.FromSubscription("d201cb5c2b814c719d199f12f7449b70", "westeurope");
-            using var synthesizer = new SpeechSynthesizer(speechConfig);
-            respond = await Speecher_Language(speechConfig, respond);
-            return respond;
-            //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
+        //public async static Task<string> Speecher(string respond)
+        //{
+        //    var speechConfig = SpeechConfig.FromSubscription("d201cb5c2b814c719d199f12f7449b70", "westeurope");
+        //    using var synthesizer = new SpeechSynthesizer(speechConfig);
+        //    respond = await Speecher_Language(speechConfig, respond);
+        //    return respond;
+        //    //await RecognitionWithAutoDetectSourceLanguageAsync(speechConfig);
 
-            //var botConfig = BotFr
-            //await synthesizer.SpeakTextAsync();
+        //    //var botConfig = BotFr
+        //    //await synthesizer.SpeakTextAsync();
 
-        }
+        //}
     }
 
 }   
