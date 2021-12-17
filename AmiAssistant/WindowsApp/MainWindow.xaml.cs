@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using IWshRuntimeLibrary;
 using Speaker_Engine;
+using AmiFriendo.CommandHandler;
 
 namespace WindowsApp
 {
@@ -67,6 +68,8 @@ namespace WindowsApp
                 User_Bubble.Content = User_Text.Text;
                 User_Bubble.Style = Resources["BubbleLeftStyle"] as Style; ;
                 Chat_Panel.Children.Add(User_Bubble);
+                CommandStore commandStore = new CommandStore();
+                Ami_Respond(commandStore.Execute(User_Text.Text));
             }
         }
 
@@ -87,10 +90,9 @@ namespace WindowsApp
             //Chat_Panel.Children.Add(Ami_bubble);
         }
 
-        private async void Ami_Respond()
+        private async void Ami_Respond(string res)
         {
-            await Listen.Speaker_Talk("Hi");
-            string res = "Hi";
+            await Listen.Speaker_Talk(res);
             ContentControl Ami_bubble = new ContentControl();
             Ami_bubble.Content = res;
             Ami_bubble.Style = Resources["BubbleRightStyle"] as Style; ;
