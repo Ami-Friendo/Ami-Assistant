@@ -36,6 +36,7 @@ namespace AmiFriendo.ConsoleApp
                 command1.Actions.Add(new ExecuteAction());
                 command1.Actions[0].InputArguments[0].ParseValue(@"C:\Program Files (x86)\Notepad++");
                 command1.Actions[0].InputArguments[1].ParseValue(@"notepad++.exe");
+
                 command1.Actions.Add(new ReturnAction());
                 command1.Actions[1].InputArguments[0].ParseValue(@"launch");
                 cs.Commands.Add(command1);

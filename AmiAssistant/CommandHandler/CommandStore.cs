@@ -19,41 +19,46 @@ namespace AmiFriendo.CommandHandler
             var context = new Dictionary<string, string>();
             Command command = null;
 
-            // find templates
-            // ex, show rate $(carg:bitcoin) in $(carg:currency)
-            string commandPattern = commandText;
-            const string pattern_carg = @"\$\(carg:(\w+)\)";
-            foreach (Match match in Regex.Matches(commandText, pattern_carg, RegexOptions.IgnoreCase))
-            {
-                commandPattern = commandPattern.Replace(match.Value, @"(\w+)");
-            }
-
-            // find command with this template
-            foreach (var c in Commands)
-            {
-                var match = Regex.Match(c.Commands[0], commandPattern);
-                if (match.Success)
-                {
-                    command = c;
-                    break;
-                }
-            }
-
-            ArgumentReplacer ar = new ArgumentReplacer();
-            ar.InitContextByCommandText(commandText, command.Commands[0], context);
-
             /// find static text
             /// ex, show time
-            //var query = (from item in Commands
-            //            from text in item.Commands
-            //            where text == commandText
-            //            select item).FirstOrDefault();
+            command = (from item in Commands
+                       from text in item.Commands
+                       where text == commandText
+                       select item).FirstOrDefault();
 
-            //if (query == null)
-            //    return "not found command";
-            ///
-            ///
+            if (command == null)
+            {
+                // find templates
+                // ex, show rate $(carg:bitcoin) in $(carg:currency)
 
+                //string commandPattern = commandText;
+
+                //string commandPattern = "";
+                //// find command with this template
+                //foreach (var c in Commands)
+                //{
+                //    commandPattern = "";
+                //    const string pattern_carg = @"\$\(carg:(\w+)\)";
+                //    foreach (Match match in Regex.Matches(c.Commands[0], pattern_carg, RegexOptions.IgnoreCase))
+                //    {
+                //        commandPattern = c.Commands[0].Replace(match.Value, @"(\w+)");
+                //    }
+
+                //    var match2 = Regex.Match(c.Commands[0], commandPattern);
+                //    if (match2.Success)
+                //    {
+                //        command = c;
+                //        break;
+                //    }
+                //}
+
+                if (command == null)
+                    return "not found command";
+
+                //ArgumentReplacer ar = new ArgumentReplacer();
+                //ar.InitContextByCommandText(commandText, command.Commands[0], context);
+            }
+                
             /// execute command
             string result = null;
             //try
