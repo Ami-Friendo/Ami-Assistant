@@ -23,6 +23,7 @@ namespace Speaker_Engine
 
         }
         public static string respond;
+        public static string language;
         public async static Task Speaker()
         {
             respond = await Talker.Speecher_Listen(respond);

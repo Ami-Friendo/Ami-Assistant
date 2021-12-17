@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:WindowsApp"
         mc:Ignorable="d"
         xmlns:tb="http://www.hardcodet.net/taskbar"
-        Height="600" Width="700"
+        Height="600" Width="414"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -95,7 +95,7 @@
         </Style>
     </Window.Resources>
     <!--#endregion-->
-    
+
     <Border Background="#274082"
             CornerRadius="20"
             Name="MainBorder"
@@ -122,18 +122,66 @@
             </materialDesign:DrawerHost.Style>
 
             <materialDesign:DrawerHost.RightDrawerContent>
-                <StackPanel Margin="16">
+                <StackPanel Margin="16"
+                            HorizontalAlignment="Center"
+                            >
                     <TextBlock
                             Margin="4"
-                            HorizontalAlignment="Center"
+                            
                             Text=""/>
-                    <Button
+                    <StackPanel Margin="0 20 0 20">
+                        <materialDesign:PackIcon Kind="Language" Height="40" Width="40"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                        <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}"
+                                    Height="50" Width="50"
+                                    Content="EN"
+                                    IsChecked="False"
+                                    Name="EN_CHECKBOX"
+                                    Checked="EN_RADIO_Checked"
+                                    Unchecked="EN_RADIO_Unchecked" />
+
+                        <RadioButton Style="{StaticResource MaterialDesignRadioButton}"
+                                  Height="50" Width="50"
+                                  Content="RU"
+                                  IsChecked="True"
+                                  Name="RU_CHECKBOX"
+                                  Unchecked="RU_RADIO_Checked"
+                                  Checked="RU_RADIO_Unchecked" />
+                        <materialDesign:PackIcon Kind="Check" Height="70" Width="70" Margin="0 20 0 0"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                        <CheckBox Style="{StaticResource MaterialDesignCheckBox}" Height="50" Width="80" IsChecked="False" 
+                                  Name="CheckBox_Install" 
+                                  Unchecked="CheckBox_Install_Unchecked" 
+                                  Checked="CheckBox_Install_Checked"
+                                  Content="Auto run"
+                                  >
+
+                        </CheckBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="0 80 0 20">
+                        <Button 
+                        VerticalAlignment="Bottom"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Background=" #276e82"
+                Height="70" Width="70"
+                Click="Button_Click_Install"
+                Margin="20"
+                 >
+                            <materialDesign:PackIcon Kind="MicrophoneAdd" Height="40" Width="40"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center"/>
+                        </Button>
+                        <Button
                             Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                             CommandParameter="{x:Static Dock.Right}"
-                            Margin="4"
                             HorizontalAlignment="Center"
                             Style="{DynamicResource MaterialDesignFlatButton}"
                             Content="CLOSE"/>
+                    </StackPanel>
                 </StackPanel>
             </materialDesign:DrawerHost.RightDrawerContent>
 
@@ -193,7 +241,7 @@
                         </Button.Template>
                     </Button>
                 </StackPanel>
-                <!--Theme || Settings BTN-->
+                <!--Settings BTN-->
                 <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal" Margin="20 0 0 0" >
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
@@ -221,19 +269,20 @@
                         Content="{materialDesign:PackIcon Kind=Cog}"/>
                     </Grid>
                 </StackPanel>
-                
+
                 <!--Assistent Message-->
                 <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" >
-                        <!--#region TextBlock Message-->
-                    <StackPanel Name="Chat_Panel" Height="300" Width="700">
+                    <!--#region TextBlock Message-->
+                    <StackPanel Name="Chat_Panel" Height="300" Width="410">
                     </StackPanel>
-                        <!--#endregion-->
+                    <!--#endregion-->
                 </StackPanel>
-                
+
+
                 <!--TextBox Command-->
                 <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" CornerRadius="20" Background="#278268" Margin="6">
                     <TextBox  
-                     Height="50" Width="650" 
+                     Height="50" Width="410" 
                      AcceptsReturn="False"
                      VerticalScrollBarVisibility="Hidden"
                      Style="{StaticResource MaterialDesignTextBox}"
@@ -241,33 +290,36 @@
                      IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" 
                      VerticalContentAlignment="Center"
                      HorizontalContentAlignment="Center"
+                     VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
                      FontSize="30"
                      Foreground="Black"
-                     Padding="0 0 40 0"
                      Text="{Binding SearchText, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      KeyDown="OnKeyDownHandler"
                      x:Name="User_Text"
                      >
-                        
+
                     </TextBox>
                 </Border>
-                
+
                 <!--Voice BTN-->
                 <Button 
                 Background="#276e82"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
-                Grid.Row="4" Grid.Column="1"
+                Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                 Height="100" Width="100"
                 VerticalAlignment="Center"
-                    HorizontalAlignment="Center" Click="Button_Click"
-                >
+                HorizontalAlignment="Center" 
+                Click="Button_Click"
+                Margin="117 0 0 0"
+                    >
                     <!--Microphone icon-->
                     <materialDesign:PackIcon Kind="MicrophoneOutline" Height="75" Width="75"
                                          VerticalAlignment="Center"
                                          HorizontalAlignment="Center"/>
                 </Button>
-                
+
             </Grid>
         </materialDesign:DrawerHost>
     </Border>

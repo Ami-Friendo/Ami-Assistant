@@ -108,6 +108,12 @@ namespace Speaker_Engine
             return speechConfig;
         }
 
+        //static object Speecher_Language(string language)
+        //{
+
+        //    return;
+        //}
+
         public async static Task<string> Speecher_Listen(string respond)
         {
 

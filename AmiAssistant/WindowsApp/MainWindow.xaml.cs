@@ -80,7 +80,7 @@ namespace WindowsApp
             User_Bubble.Content =res;
             User_Bubble.Style = Resources["BubbleLeftStyle"] as Style; ;
             Chat_Panel.Children.Add(User_Bubble);
-
+            Ami_Respond(commandStore.Execute(res));
             //await Listen.Speaker_Talk("Hi");
             //string res = "Hi";
             //ContentControl Ami_bubble = new ContentControl();
@@ -164,6 +164,32 @@ namespace WindowsApp
                 return false;
             }
             return true;
+        }
+        private void EN_RADIO_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void EN_RADIO_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RU_RADIO_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RU_RADIO_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Install_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Install_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
