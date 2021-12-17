@@ -8,13 +8,9 @@
 
   <ItemGroup>
     <Compile Remove="MVVM\**" />
-    <Compile Remove="Theme\**" />
     <EmbeddedResource Remove="MVVM\**" />
-    <EmbeddedResource Remove="Theme\**" />
     <None Remove="MVVM\**" />
-    <None Remove="Theme\**" />
     <Page Remove="MVVM\**" />
-    <Page Remove="Theme\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +21,25 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Speaker\Speaker_Engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resource1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

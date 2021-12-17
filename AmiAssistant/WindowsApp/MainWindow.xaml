@@ -195,15 +195,6 @@
                 </StackPanel>
                 <!--Theme || Settings BTN-->
                 <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal" Margin="20 0 0 0" >
-                    <RadioButton
-                Style="{StaticResource MaterialDesignChoiceChipPrimaryRadioButton}"
-                IsChecked="True"
-                GroupName="GroupChoiceChip">Light Theme
-                    </RadioButton>
-                    <RadioButton
-                    Style="{StaticResource MaterialDesignChoiceChipRadioButton}"
-                    GroupName="GroupChoiceChip">Dark Theme
-                    </RadioButton>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
                         Margin="5">
@@ -232,19 +223,11 @@
                 </StackPanel>
                 
                 <!--Assistent Message-->
-                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
-                    <TextBlock 
-             Height="300" Width="700" 
-             TextWrapping="Wrap"
-             VerticalAlignment="Top"
-             HorizontalAlignment="Left"
-             Style="{StaticResource MaterialDesignBody1TextBlock}"
-             x:Name="TextBlock_Text">
+                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" >
                         <!--#region TextBlock Message-->
-                    <StackPanel Name="Chat_Panel">
+                    <StackPanel Name="Chat_Panel" Height="300" Width="700">
                     </StackPanel>
                         <!--#endregion-->
-                    </TextBlock>
                 </StackPanel>
                 
                 <!--TextBox Command-->

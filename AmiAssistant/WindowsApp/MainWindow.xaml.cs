@@ -26,8 +26,7 @@ namespace WindowsApp
         public MainWindow()
         {
             InitializeComponent();
-
-            //ni.Icon = new System.Drawing.Icon("Hidden_Icon.ico");
+            ni.Icon = Resource1.Hidden_Icon;
 
             //Form move
             MainBorder.MouseLeftButtonDown += new MouseButtonEventHandler(layoutRoot_MouseLeftButtonDown);
@@ -65,15 +64,6 @@ namespace WindowsApp
                 Chat_Panel.Children.Add(User_Bubble);
             }
         }
-
-        //private void Theme_Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //}
-
-        //private async Task Voice_Button_ClickAsync(object sender, RoutedEventArgs e)
-        //{
-         
-        //}
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
