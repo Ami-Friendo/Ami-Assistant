@@ -23,15 +23,26 @@ namespace AmiFriendo.CommandHandler
         public void InitContextByCommandText(string command, string commandPattern, CommandContext cc)
         {
             const string pattern_carg = @"\$\(carg:(\w+)\)";
+            List<string> keys = new List<string>();
+            List<string> values = new List<string>();
 
             foreach (Match match in Regex.Matches(commandPattern, pattern_carg, RegexOptions.IgnoreCase))
             {
-                cc[match.Groups[1].Value] = null;
+                //cc[match.Groups[1].Value] = null;
+                keys.Add(match.Groups[1].Value);
                 commandPattern = commandPattern.Replace(match.Value, @"(\w+)");
-                var match2 = Regex.Match(commandPattern, @"(\w+)");
-
-                //textWithTemplate = textWithTemplate.Replace(match.Value, );
             }
+
+            foreach (Match match in Regex.Matches(command, commandPattern, RegexOptions.IgnoreCase))
+            {
+                //cc[match.Groups[1].Value] = null;
+                values.Add(match.Groups[1].Value);
+                commandPattern = commandPattern.Replace(match.Value, @"(\w+)");
+            }
+
+            var match2 = Regex.Match(commandPattern, @"(\w+)");
+
+            //textWithTemplate = textWithTemplate.Replace(match.Value, );
 
             //foreach (Match match in Regex.Matches(command, pattern_carg, RegexOptions.IgnoreCase))
             //{
