@@ -100,7 +100,7 @@ namespace AmiFriendo.CommandHandler
             command4.Commands.Add("show date");
             command4.Commands.Add("date");
             command4.Commands.Add("дата");
-            command4.Commands.Add("покаи дату");
+            command4.Commands.Add("покажи дату");
             command4.Actions.Add(new SpeakAction());
             command4.Actions[0].InputArguments[0].ParseValue(@"$(DateArgument:now)");
             command4.Actions.Add(new ReturnAction());
