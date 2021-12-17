@@ -25,7 +25,7 @@ namespace WindowsApp
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        CommandStore commandStore = new CommandStore();
         System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
         public MainWindow()
         {
@@ -66,9 +66,8 @@ namespace WindowsApp
             {
                 ContentControl User_Bubble = new ContentControl();
                 User_Bubble.Content = User_Text.Text;
-                User_Bubble.Style = Resources["BubbleLeftStyle"] as Style; ;
+                User_Bubble.Style = Resources["BubbleLeftStyle"] as Style;
                 Chat_Panel.Children.Add(User_Bubble);
-                CommandStore commandStore = new CommandStore();
                 Ami_Respond(commandStore.Execute(User_Text.Text));
             }
         }
