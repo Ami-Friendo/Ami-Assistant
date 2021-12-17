@@ -186,6 +186,19 @@ namespace AmiFriendo.CommandHandler
             command.Actions[1].InputArguments[0].ParseValue(@"hello, user!");
             Commands.Add(command);
 
+            command = new Command();
+            command.Commands.Add("выключись");
+            command.Commands.Add("shutdown");
+            command.Actions.Add(new ExecuteAction());
+            command.Actions[0].InputArguments[0].ParseValue(@"C:\Windows\System32");
+            command.Actions[0].InputArguments[1].ParseValue(@"shutdown.exe");
+            
+            command.Actions.Add(new SpeakAction());
+            command.Actions[0].InputArguments[0].ParseValue(@"goodbye, user!");
+            command.Actions.Add(new ReturnAction());
+            command.Actions[1].InputArguments[0].ParseValue(@"goodbye, user!");
+            Commands.Add(command);
+
             //command = new Command();
             //command.Commands.Add("запусти командную строку");
             //command.Commands.Add("start a command line");
