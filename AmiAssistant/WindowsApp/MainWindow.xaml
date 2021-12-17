@@ -125,18 +125,14 @@
                 <StackPanel Margin="16"
                             HorizontalAlignment="Center"
                             >
-                    <TextBlock
-                            Margin="4"
-                            
-                            Text=""/>
-                    <StackPanel Margin="0 20 0 20">
+                    <StackPanel Margin="0 20 0 0">
                         <materialDesign:PackIcon Kind="Language" Height="40" Width="40"
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Center"/>
                         <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}"
                                     Height="50" Width="50"
                                     Content="EN"
-                                    IsChecked="False"
+                                    IsChecked="True"
                                     Name="EN_CHECKBOX"
                                     Checked="EN_RADIO_Checked"
                                     Unchecked="EN_RADIO_Unchecked" />
@@ -144,10 +140,38 @@
                         <RadioButton Style="{StaticResource MaterialDesignRadioButton}"
                                   Height="50" Width="50"
                                   Content="RU"
-                                  IsChecked="True"
+                                  IsChecked="False"
                                   Name="RU_CHECKBOX"
                                   Unchecked="RU_RADIO_Checked"
                                   Checked="RU_RADIO_Unchecked" />
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    >
+                            <!--Microphone Button-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Margin="5"
+                                    x:Name="Microphone_BTN" Click="Microphone_BTN_Click">
+                                <materialDesign:PackIcon Kind="MicrophoneRemove" Margin="2"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                            </Button>
+                            <!--Microphone Button-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Margin="5"
+                                    x:Name="Voice_BTN" Click="Voice_BTN_Click">
+                                <materialDesign:PackIcon Kind="SpeakerOff" Margin="2"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                            </Button>
+                        </StackPanel>
+                        <!--Slider-->
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <Label Content="Voice:" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"
+                                   x:Name="Voice_Label">
+                                
+                            </Label>
+                            <Slider x:Name="Voice_Slider" Style="{StaticResource MaterialDesignDiscreteHorizontalSlider}" Width="100"></Slider>
+                        </StackPanel>
                         <materialDesign:PackIcon Kind="Check" Height="70" Width="70" Margin="0 20 0 0"
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Center"/>
@@ -157,17 +181,17 @@
                                   Checked="CheckBox_Install_Checked"
                                   Content="Auto run"
                                   >
-
                         </CheckBox>
                     </StackPanel>
 
-                    <StackPanel Margin="0 80 0 20">
+                    <StackPanel >
                         <Button 
                         VerticalAlignment="Bottom"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                 Background=" #276e82"
                 Height="70" Width="70"
+                Click="Button_Click_Install"
                 Margin="20"
                  >
                             <materialDesign:PackIcon Kind="MicrophoneAdd" Height="40" Width="40"
@@ -319,7 +343,7 @@
                     <!--Microphone icon-->
                     <materialDesign:PackIcon Kind="MicrophoneOutline" Height="75" Width="75"
                                          VerticalAlignment="Center"
-                                         HorizontalAlignment="Center"/>
+                                         HorizontalAlignment="Center" />
                 </Button>
 
             </Grid>
