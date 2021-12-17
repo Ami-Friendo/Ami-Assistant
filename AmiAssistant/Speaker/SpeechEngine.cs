@@ -102,10 +102,10 @@ namespace Speaker_Engine
             }
         }
 
-        static void Speecher_Settings()
+        static object Speecher_Settings()
         {
             var speechConfig = SpeechConfig.FromSubscription("d201cb5c2b814c719d199f12f7449b70", "westeurope");
-            using var synthesizer = new SpeechSynthesizer(speechConfig);
+            return speechConfig;
         }
 
         public async static Task<string> Speecher_Language(SpeechConfig speechConfig, string respond)
@@ -153,13 +153,15 @@ namespace Speaker_Engine
 
         }
 
-        public static async Task Speecher_Voice(SpeechConfig speechConfig)
+        public static async Task Speecher_Voice(string answer)
         {
             // Note: if only language is set, the default voice of that language is chosen.
             // speechConfig.SpeechSynthesisLanguage = "<your-synthesis-language>"; // e.g. "de-DE"
             // The voice setting will overwrite language setting.
             // The voice setting will not overwrite the voice element in input SSML.
             //speechConfig.SpeechSynthesisVoiceName = "ru-RU-DariyaNeural";
+            using var synthesizer = new SpeechSynthesizer((SpeechConfig)Speecher_Settings());
+            await synthesizer.SpeakTextAsync(answer);
         }
 
         //    public interface ISpeech

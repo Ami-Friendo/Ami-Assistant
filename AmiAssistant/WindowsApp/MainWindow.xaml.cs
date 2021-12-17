@@ -67,9 +67,10 @@ namespace WindowsApp
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            await Listen.Speaker();
-            string res = Listen.respond;
-
+            //await Listen.Speaker();
+            //string res = Listen.respond;
+            await Listen.Speaker_Talk("Hi");
+            string res = "Hi";
             ContentControl Ami_bubble = new ContentControl();
             Ami_bubble.Content = res;
             Ami_bubble.Style = Resources["BubbleRightStyle"] as Style; ;
