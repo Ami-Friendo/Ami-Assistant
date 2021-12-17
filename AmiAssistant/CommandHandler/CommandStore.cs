@@ -192,7 +192,6 @@ namespace AmiFriendo.CommandHandler
             command.Actions.Add(new ExecuteAction());
             command.Actions[0].InputArguments[0].ParseValue(@"C:\Windows\System32");
             command.Actions[0].InputArguments[1].ParseValue(@"shutdown.exe");
-            
             command.Actions.Add(new SpeakAction());
             command.Actions[0].InputArguments[0].ParseValue(@"goodbye, user!");
             command.Actions.Add(new ReturnAction());
