@@ -36,7 +36,7 @@ namespace AmiFriendo.CommandHandler.Actions
 
             var price = client.GetCurrencyBySymbol(InputArguments[0].Value, InputArguments[1].Value);
 
-            context.Add("value", Math.Round(price).ToString() + " " + InputArguments[1].Value);
+            context.Add("value", Math.Round(price, 2).ToString() + " " + InputArguments[1].Value);
         }
 
         public bool CanExecute()

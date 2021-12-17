@@ -91,11 +91,11 @@ namespace WindowsApp
 
         private async void Ami_Respond(string res)
         {
-            await Listen.Speaker_Talk(res);
             ContentControl Ami_bubble = new ContentControl();
             Ami_bubble.Content = res;
             Ami_bubble.Style = Resources["BubbleRightStyle"] as Style; ;
             Chat_Panel.Children.Add(Ami_bubble);
+            await Listen.Speaker_Talk(res);
         }
 
         private static void CopyFilesRecursively(string sourcePath, string targetPath)
