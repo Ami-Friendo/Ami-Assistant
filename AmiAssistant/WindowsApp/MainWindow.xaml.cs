@@ -80,7 +80,7 @@ namespace WindowsApp
             User_Bubble.Content =res;
             User_Bubble.Style = Resources["BubbleLeftStyle"] as Style; ;
             Chat_Panel.Children.Add(User_Bubble);
-
+            Ami_Respond(commandStore.Execute(res));
             //await Listen.Speaker_Talk("Hi");
             //string res = "Hi";
             //ContentControl Ami_bubble = new ContentControl();
