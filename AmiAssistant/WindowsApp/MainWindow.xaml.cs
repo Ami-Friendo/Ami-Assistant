@@ -165,6 +165,32 @@ namespace WindowsApp
             }
             return true;
         }
+        private void EN_RADIO_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void EN_RADIO_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RU_RADIO_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void RU_RADIO_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Install_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Install_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
