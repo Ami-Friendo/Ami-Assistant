@@ -21,7 +21,6 @@ namespace WindowsApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ContentControl User_Bubble = new ContentControl();
 
         System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
         public MainWindow()
@@ -60,12 +59,10 @@ namespace WindowsApp
         {
             if (e.Key == Key.Return)
             {
-
+                ContentControl User_Bubble = new ContentControl();
                 User_Bubble.Content = User_Text.Text;
-
-                User_Bubble.Style = (Style)User_Bubble.FindResource("BubbleRightStyle");
+                User_Bubble.Style = Resources["BubbleLeftStyle"] as Style; ;
                 Chat_Panel.Children.Add(User_Bubble);
-
             }
         }
 
@@ -78,11 +75,15 @@ namespace WindowsApp
          
         //}
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-        //    await Listen.Speaker();
-        //    string res = Listen.respond;
-        //    //Tst.Text = res;
+            await Listen.Speaker();
+            string res = Listen.respond;
+
+            ContentControl Ami_bubble = new ContentControl();
+            Ami_bubble.Content = res;
+            Ami_bubble.Style = Resources["BubbleRightStyle"] as Style; ;
+            Chat_Panel.Children.Add(Ami_bubble);
         }
     }
 

@@ -242,7 +242,6 @@
              x:Name="TextBlock_Text">
                         <!--#region TextBlock Message-->
                     <StackPanel Name="Chat_Panel">
-                        <ContentControl Content="Text" Style="{StaticResource BubbleLeftStyle}"></ContentControl>
                     </StackPanel>
                         <!--#endregion-->
                     </TextBlock>
