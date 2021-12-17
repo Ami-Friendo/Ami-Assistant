@@ -198,6 +198,15 @@ namespace WindowsApp
                 Chat_Panel.Children.RemoveAt(i-1);
             }
         }
+          private void Microphone_BTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Voice_BTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
