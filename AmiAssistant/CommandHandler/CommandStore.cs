@@ -26,7 +26,7 @@ namespace AmiFriendo.CommandHandler
             /// ex, show time
             command = (from item in Commands
                        from text in item.Commands
-                       where text == commandText
+                       where text == commandText.ToLower()
                        select item).FirstOrDefault();
 
             if (command == null)
