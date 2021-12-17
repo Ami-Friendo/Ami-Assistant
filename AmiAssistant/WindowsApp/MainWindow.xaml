@@ -168,7 +168,6 @@
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                 Background=" #276e82"
                 Height="70" Width="70"
-                Click="Button_Click_Install"
                 Margin="20"
                  >
                             <materialDesign:PackIcon Kind="MicrophoneAdd" Height="40" Width="40"

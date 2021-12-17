@@ -165,6 +165,18 @@ namespace AmiFriendo.CommandHandler
             command.Actions[2].InputArguments[0].ParseValue(@"launched");
             Commands.Add(command);
 
+            command = new Command();
+            command.Commands.Add("запусти браузер");
+            command.Commands.Add("open browser");
+            command.Actions.Add(new ExecuteAction());
+            command.Actions[0].InputArguments[0].ParseValue(@"C:\Program Files (x86)\Google\Chrome\Application");
+            command.Actions[0].InputArguments[1].ParseValue(@"chrome.exe");
+            command.Actions.Add(new SpeakAction());
+            command.Actions[1].InputArguments[0].ParseValue(@"launched");
+            command.Actions.Add(new ReturnAction());
+            command.Actions[2].InputArguments[0].ParseValue(@"launched");
+            Commands.Add(command);
+
             //command = new Command();
             //command.Commands.Add("запусти командную строку");
             //command.Commands.Add("start a command line");
