@@ -191,6 +191,13 @@ namespace WindowsApp
         {
 
         }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            for (int i = Chat_Panel.Children.Count; i > 0; i--)
+            {
+                Chat_Panel.Children.RemoveAt(i-1);
+            }
+        }
     }
 
 }
