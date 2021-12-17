@@ -177,6 +177,15 @@ namespace AmiFriendo.CommandHandler
             command.Actions[2].InputArguments[0].ParseValue(@"launched");
             Commands.Add(command);
 
+            command = new Command();
+            command.Commands.Add("привет ами");
+            command.Commands.Add("hello amy");
+            command.Actions.Add(new SpeakAction());
+            command.Actions[0].InputArguments[0].ParseValue(@"hello, user!");
+            command.Actions.Add(new ReturnAction());
+            command.Actions[1].InputArguments[0].ParseValue(@"hello, user!");
+            Commands.Add(command);
+
             //command = new Command();
             //command.Commands.Add("запусти командную строку");
             //command.Commands.Add("start a command line");
