@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommandHandler\CommandHandler.csproj" />
     <ProjectReference Include="..\Speaker\Speaker_Engine.csproj" />
   </ItemGroup>
 
